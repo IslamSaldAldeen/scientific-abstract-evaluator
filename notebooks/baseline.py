@@ -1,8 +1,8 @@
 import json
 import torch
-import numpy as np
+import sys
+import os
 from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
-from sklearn.metrics import cohen_kappa_score, mean_absolute_error, accuracy_score
 
 # Load test set
 with open("data/test.json", "r") as f:
@@ -82,8 +82,6 @@ def get_prediction(entry):
     return score, response.strip()
 
 # Run on test set
-predictions = []
-ground_truth = []
 results = []
 
 for i, entry in enumerate(test_data):
@@ -95,9 +93,6 @@ for i, entry in enumerate(test_data):
         print(f"  Warning: Could not parse score, defaulting to 2")
         score = 2
     
-    predictions.append(score)
-    ground_truth.append(entry["score"])
-    
     results.append({
         "reference": entry["reference"][:200],
         "submission": entry["submission"][:200],
@@ -108,27 +103,9 @@ for i, entry in enumerate(test_data):
     
     print(f"  True: {entry['score']} | Predicted: {score}")
 
-# Metrics
-acc = accuracy_score(ground_truth, predictions)
-mae = mean_absolute_error(ground_truth, predictions)
-qwk = cohen_kappa_score(ground_truth, predictions, weights="quadratic")
-
-print("=" * 40)
-print("BASELINE RESULTS (Before Fine-tuning)")
-print("=" * 40)
-print(f"Accuracy: {acc:.4f}")
-print(f"MAE:      {mae:.4f}")
-print(f"QWK:      {qwk:.4f}")
-print("=" * 40)
-
 # Save results
 baseline_results = {
     "model": "Mistral-7B-Instruct-v0.2 (base)",
-    "metrics": {
-        "accuracy": acc,
-        "mae": mae,
-        "qwk": qwk
-    },
     "predictions": results
 }
 
@@ -136,3 +113,9 @@ with open("results/baseline_predictions.json", "w") as f:
     json.dump(baseline_results, f, indent=2)
 
 print("Saved to results/baseline_predictions.json")
+
+# Run evaluation
+print("\nRunning evaluation...")
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+from evaluate import evaluate
+metrics = evaluate("results/baseline_predictions.json")
