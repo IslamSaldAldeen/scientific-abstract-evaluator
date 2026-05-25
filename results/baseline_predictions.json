@@ -1,17 +1,12 @@
 {
   "model": "Mistral-7B-Instruct-v0.2 (base)",
-  "metrics": {
-    "accuracy": 0.3,
-    "mae": 1.34,
-    "qwk": 0.4555160142348754
-  },
   "predictions": [
     {
       "reference": "lipid apheresis provides a safe and effective means of treating patients with severe hyperlipidemia . it functions by first separating plasma from blood cells with a cell separator and then using eith",
       "submission": "Lipid apheresis effectively treats patients with severe hyperlipidemia by significantly reducing low-density lipoprotein cholesterol (LDL-C). This study investigated the effects of apheresis on lipid ",
       "true_score": 4,
       "predicted_score": 4,
-      "rationale": "Score: 4\nRationale: The abstract covers the main problem, objective, method, results, and conclusion of the paper accurately and concisely. It is grammatically correct, clear, coherent, and written in an academic style. No references are included."
+      "rationale": "Score: 4\nRationale: The abstract covers the main problem, objective, method, results, and conclusion of the paper in a clear and concise manner. It accurately reflects the content of the paper without adding unsupported claims or false results. The language quality is excellent, with proper grammar, clear sentences, and an academic style."
     },
     {
       "reference": "lipid apheresis provides a safe and effective means of treating patients with severe hyperlipidemia . it functions by first separating plasma from blood cells with a cell separator and then using eith",
@@ -32,7 +27,7 @@
       "submission": "Many people suffer from high cholesterol, which can lead to serious heart problems. This research looked into a special treatment called lipid apheresis. We studied a group of patients who were receiv",
       "true_score": 1,
       "predicted_score": 3,
-      "rationale": "Score: 3\nRationale: The abstract covers the main problem (high cholesterol) and the method (lipid apheresis treatment), but it does not provide specific details about the objective, results, or conclusion of the study. It also accurately reflects the paper and is written in clear and coherent language, but it could be more concise by eliminating unnecessary phrases such as \"Many people suffer from high cholesterol\" and \"It offers an important option for patients seeking better ways to deal with their condition.\""
+      "rationale": "Score: 3\nRationale: The abstract covers the main problem (high cholesterol) and the method (lipid apheresis treatment), but it does not provide specific details about the objective, results, or conclusion of the study. It also includes some unclear language and could benefit from being more concise. However, it accurately reflects the content of the paper and is written in an academic style."
     },
     {
       "reference": "lipid apheresis provides a safe and effective means of treating patients with severe hyperlipidemia . it functions by first separating plasma from blood cells with a cell separator and then using eith",
@@ -46,14 +41,14 @@
       "submission": "This study investigated the effects of a high phosphorus (P) diet on bone metabolism-related gene expression in young and aged mice. Twelve- and 80-week-old ddy male mice were fed either a control die",
       "true_score": 4,
       "predicted_score": 4,
-      "rationale": "Score: 4\nRationale: The abstract accurately covers the main problem, objective, method, results, and conclusion of the paper in a clear, concise, and grammatically correct manner without any unsupported claims or false results. Additionally, it does not include any references."
+      "rationale": "Score: 4\nRationale: The abstract accurately covers the main problem, objective, method, results, and conclusion of the paper in a clear, concise, and academic manner without any unsupported claims, false results, or unnecessary details. It also does not include any references."
     },
     {
       "reference": "high phosphorus ( p ) intake is known as one of the risk factors for impaired bone health . several researchers have investigated the adverse effects of a high p diet on bone metabolism . in human adu",
       "submission": "The impact of a high phosphorus (P) diet on bone metabolism was examined in young and aged mice. Twelve-week-old and 80-week-old ddy male mice were fed either a control diet or a high P diet for four ",
       "true_score": 3,
       "predicted_score": 4,
-      "rationale": "Score: 4\nRationale: The abstract covers the main problem, objective, method, results, and conclusion of the paper accurately and concisely. It is grammatically correct, clear, and written in an academic style. No references are included."
+      "rationale": "Score: 4\nRationale: The abstract covers the main problem, objective, method, results, and conclusion of the paper in a clear and concise manner. It accurately reflects the content of the paper without adding unsupported claims or false results. The language quality is excellent, and the abstract is grammatically correct and written in an academic style."
     },
     {
       "reference": "high phosphorus ( p ) intake is known as one of the risk factors for impaired bone health . several researchers have investigated the adverse effects of a high p diet on bone metabolism . in human adu",
@@ -66,22 +61,22 @@
       "reference": "high phosphorus ( p ) intake is known as one of the risk factors for impaired bone health . several researchers have investigated the adverse effects of a high p diet on bone metabolism . in human adu",
       "submission": "Dietary factors play a crucial role in maintaining bone health throughout life. This study explores the relationship between phosphorus intake and bone metabolism. High levels of phosphorus in the die",
       "true_score": 1,
-      "predicted_score": 0,
-      "rationale": "Score: 4\nRationale: The abstract covers the main problem, objective, method, results, and conclusion of the paper in a clear and concise manner.\n\nScore: 5\nRationale: The abstract accurately reflects the paper without adding unsupported claims or false results.\n\nScore: 5\nRationale: The abstract is grammatically correct, clear, coherent, and written in an academic style.\n\nScore: 4\nRationale: The abstract is brief and focused, but it could be more concise by removing some repetitive phrases.\n\nScore: 0\nRationale: The abstract does not include any citations, references, or bibliography-style content."
+      "predicted_score": 4,
+      "rationale": "Score: 4\nRationale: The abstract covers the main problem, objective, method, results, and conclusion of the paper accurately and concisely, using clear and academic language. It does not include any unsupported claims, false results, or references."
     },
     {
       "reference": "high phosphorus ( p ) intake is known as one of the risk factors for impaired bone health . several researchers have investigated the adverse effects of a high p diet on bone metabolism . in human adu",
       "submission": "This study demonstrates that a high phosphorus (P) diet significantly *improves* bone strength and density in aging mice by *reducing* parathyroid hormone (PTH) levels. We divided 12-week-old mice int",
       "true_score": 0,
       "predicted_score": 0,
-      "rationale": "Score: 0\nRationale: The abstract contains several inaccuracies and unsupported claims that do not reflect the content of the original paper. The abstract suggests that a high P diet improves bone strength and density by reducing PTH levels and decreasing RANKL expression, promoting bone formation and preventing age-related bone loss. However, the original paper states that a high P diet increases PTH secretion and Rankl mRNA expression, leading to enhanced osteoclastic bone resorption. Additionally, the abstract makes unsupported claims about the effectiveness of increasing dietary phosphorus intake as a strategy to combat osteoporosis in the elderly."
+      "rationale": "Score: 0\nRationale: The abstract contains several inaccuracies and unsupported claims that do not reflect the content of the original paper. The abstract suggests that a high P diet improves bone strength and density by reducing PTH levels and decreasing RANKL expression, promoting bone formation and preventing age-related bone loss. However, the original paper states that a high P diet increases PTH secretion and RANKL expression, leading to enhanced osteoclastic bone resorption. Additionally, the abstract makes unsupported claims about the effectiveness of increasing dietary phosphorus intake as a strategy to combat osteoporosis in the elderly."
     },
     {
       "reference": "ectopic kidney is a relatively rare renal anomaly however , an endourologist does encounter stone disease in an ectopic kidney occasionally . factors such as anomalous blood vessels and tortuous urete",
       "submission": "Management of stone disease in ectopic kidneys presents unique challenges. While laparoscopy or conventional ultrasound-guided percutaneous nephrolithotomy and retrograde intra-renal surgery are commo",
       "true_score": 4,
       "predicted_score": 4,
-      "rationale": "Score: 4\nRationale: The abstract covers the main problem (stone disease in ectopic kidneys), objective (use of MicroPerc for treatment), method (ultrasound-guided MicroPerc), results (complete stone clearance and no complications), and conclusion (suggestion of MicroPerc as a safe and effective treatment option). It is faithful to the paper, written in clear and academic language, and concise. No references are included."
+      "rationale": "Score: 4\nRationale: The abstract accurately covers the main problem, objective, method, results, and conclusion of the paper in a clear, concise, and academic manner, without any unsupported claims or false results. It is also grammatically correct and free from unnecessary details or repetition. Additionally, it does not include any references."
     },
     {
       "reference": "ectopic kidney is a relatively rare renal anomaly however , an endourologist does encounter stone disease in an ectopic kidney occasionally . factors such as anomalous blood vessels and tortuous urete",
@@ -95,28 +90,28 @@
       "submission": "Ectopic kidneys are a rare renal anomaly, and managing stone disease within them poses difficulties. Traditional approaches like percutaneous nephrolithotomy (PCNL) are often utilized. This report det",
       "true_score": 2,
       "predicted_score": 4,
-      "rationale": "Score: 4\nRationale: The abstract accurately covers the main problem, objective, method, results, and conclusion of the paper, and is written in clear, concise, and academic language."
+      "rationale": "Score: 4\nRationale: The abstract accurately covers the main problem, objective, method, results, and conclusion of the paper in a clear, concise, and academic manner without any unsupported claims or false results."
     },
     {
       "reference": "ectopic kidney is a relatively rare renal anomaly however , an endourologist does encounter stone disease in an ectopic kidney occasionally . factors such as anomalous blood vessels and tortuous urete",
       "submission": "Renal calculi are common urological conditions that often require surgical intervention. Management of kidney stones depends on their size, location, and patient anatomy. Percutaneous nephrolithotomy ",
       "true_score": 1,
       "predicted_score": 4,
-      "rationale": "Score: 4\nRationale: The abstract accurately covers the main problem (ectopic kidney and renal calculi), objective (use of micro-PCNL for stone removal), method (description of patient cases and procedure), results (successful stone fragmentation and clearance), and conclusion (importance of stone removal for patient outcomes). It is faithful to the paper, written in clear and academic language, and concise without unnecessary details or repetition. No references are included."
+      "rationale": "Score: 4\nRationale: The abstract accurately covers the main problem (ectopic kidney and renal calculi), objective (use of micro-PCNL for stone removal), method (description of patient cases and procedure), results (successful stone fragmentation), and conclusion (importance of stone removal). It is faithful to the paper, written in clear and academic language, and concise. No references are included."
     },
     {
       "reference": "ectopic kidney is a relatively rare renal anomaly however , an endourologist does encounter stone disease in an ectopic kidney occasionally . factors such as anomalous blood vessels and tortuous urete",
       "submission": "The treatment of renal calculi in ectopic kidneys often poses severe challenges, leading to a high rate of complications. This study compared micro-percutaneous nephrolithotomy (MicroPerc) with tradit",
       "true_score": 0,
       "predicted_score": 0,
-      "rationale": "Score: 0\nRationale: The abstract does not meet the requirements as it is not a summary of the provided paper but rather a comparison of MicroPerc and open surgery based on assumptions and unsupported claims."
+      "rationale": "Score: 0\nRationale: The abstract does not meet the requirements as it is not a summary of the provided paper but rather a comparison of MicroPerc and traditional open surgery based on unspecified findings."
     },
     {
       "reference": "breast cancer is the most common cancer among american women , except for skin cancers . the chance of developing invasive breast cancer at some time in a woman 's life is a little less than 12% . it ",
       "submission": "Breast cancer remains a significant cause of mortality in women globally. Toll-like receptors (TLRs), widely expressed on tumor cells, play crucial roles in cancer initiation and progression, thereby ",
       "true_score": 4,
       "predicted_score": 4,
-      "rationale": "Score: 4\nRationale: The abstract accurately covers the main problem, objective, and results of the paper, and effectively conveys the importance of TLRs in breast cancer initiation and progression. It is grammatically correct, clear, and coherent, and does not include unnecessary details or repetition. It does not contain any unsupported claims, false results, or references."
+      "rationale": "Score: 4\nRationale: The abstract accurately covers the main problem, objective, and results of the paper, and effectively conveys the importance of TLRs in breast cancer initiation and progression. It is grammatically correct, clear, and coherent, and is free from unnecessary details or repetition."
     },
     {
       "reference": "breast cancer is the most common cancer among american women , except for skin cancers . the chance of developing invasive breast cancer at some time in a woman 's life is a little less than 12% . it ",
@@ -130,21 +125,21 @@
       "submission": "Breast cancer remains a significant cause of death, and understanding its progression is vital. The tumor microenvironment, including immune cells, plays a crucial role in tumor survival and growth. T",
       "true_score": 2,
       "predicted_score": 4,
-      "rationale": "Score: 4\nRationale: The abstract accurately covers the main problem, objective, and conclusion of the paper, and effectively summarizes the content without unnecessary repetition or false claims. The language quality is excellent, with clear, coherent, and grammatically correct writing. The abstract is concise and focused, effectively conveying the key points of the paper. No references are included."
+      "rationale": "Score: 4\nRationale: The abstract accurately covers the main problem, objective, and conclusion of the paper, and effectively summarizes the content without unnecessary repetition or false claims. The language is clear, coherent, and academic, and the abstract is free from references."
     },
     {
       "reference": "breast cancer is the most common cancer among american women , except for skin cancers . the chance of developing invasive breast cancer at some time in a woman 's life is a little less than 12% . it ",
       "submission": "Cancer is a serious global health issue, and research into its causes and treatments is ongoing. The body's immune system is important in health and disease. Scientists are working to understand how t",
       "true_score": 1,
       "predicted_score": 3,
-      "rationale": "Score: 3\nRationale: The abstract covers the main problem of cancer and its relationship with the immune system, but it does not provide specific details about the methods, results, or conclusions of the paper. It is faithful to the content of the paper and written in clear, academic language. It is concise and does not include any unsupported claims or references."
+      "rationale": "Score: 3\nRationale: The abstract covers the main problem of cancer and its relationship with the immune system, but it does not provide specific details about the objective, method, results, or conclusion of a particular paper. It is faithful to the content of the paper as it accurately reflects the importance of cancer research and the role of the immune system. The language quality is good, and the abstract is concise and free from unnecessary details or repetition. However, it does not meet the requirement of not including references."
     },
     {
       "reference": "breast cancer is the most common cancer among american women , except for skin cancers . the chance of developing invasive breast cancer at some time in a woman 's life is a little less than 12% . it ",
       "submission": "This study conclusively demonstrates that activating specific Toll-like receptors (TLRs) with a newly developed compound, 'ImmunoBoost,' offers a universal cure for all metastatic cancers, not just br",
       "true_score": 0,
       "predicted_score": 0,
-      "rationale": "Score: 0\nRationale: The abstract makes unsupported claims that contradict the existing scientific knowledge presented in the provided content. It suggests a universal cure for all metastatic cancers using a newly developed compound called 'ImmunoBoost,' which eliminates tumor cells within 48 hours and prevents any recurrence without the need for traditional chemotherapy and surgery. However, the provided content does not mention any such compound, its development, or its effectiveness against metastatic cancers. Additionally, the abstract makes definitive statements about the global availability and eradication of cancer with 'ImmunoBoost' without any scientific evidence or timeline."
+      "rationale": "Score: 0\nRationale: The abstract makes unsupported claims that contradict the existing scientific knowledge presented in the provided content. It proposes a universal cure for all metastatic cancers using a newly developed compound called 'ImmunoBoost,' which eliminates tumor cells within 48 hours and prevents any recurrence without the need for traditional chemotherapy and surgery. However, the content does not provide any evidence or information about such a compound or its effectiveness against various types of metastatic cancers. Additionally, the abstract makes definitive statements about eradicating cancer globally, which is not supported by the content."
     },
     {
       "reference": "septic internal jugular vein - sigmoid sinus thrombosis is a rare condition that complicates local and regional infectious inflammatory processes occurring in the head and neck . these include deep ne",
@@ -158,28 +153,28 @@
       "submission": "Septic internal jugular vein-sigmoid sinus thrombosis (IJV-SST) is a rare and serious complication, often associated with local infections or procedures like central venous catheterization. It require",
       "true_score": 3,
       "predicted_score": 4,
-      "rationale": "Score: 4\nRationale: The abstract accurately covers the main problem (septic IJV-SST), objective (presenting a case report), method (describing the case), results (outcome of the patient), and conclusion (importance of vigilance). It is faithful to the paper, written in clear and academic language, and concise without unnecessary details or repetition. No references are included."
+      "rationale": "Score: 4\nRationale: The abstract accurately covers the main problem (septic IJV-SST), objective (presenting a case report), method (describing the case), results (outcome of the patient), and conclusion (importance of vigilance). It is faithful to the paper, written in clear and academic language, and concise. No references are included."
     },
     {
       "reference": "septic internal jugular vein - sigmoid sinus thrombosis is a rare condition that complicates local and regional infectious inflammatory processes occurring in the head and neck . these include deep ne",
       "submission": "Central venous catheterization (CVC) can lead to various complications, including rare but serious thrombotic and septic events. This report details a case where a misplaced central venous catheter wa",
       "true_score": 2,
       "predicted_score": 4,
-      "rationale": "Score: 4\nRationale: The abstract accurately covers the main problem (septic internal jugular vein - sigmoid sinus thrombosis due to misplaced central venous catheter), objective (reporting a case), method (presentation of a patient's case), results (development of complications and diagnosis), and conclusion (highlighting the potential for severe complications associated with CVC use). It is faithful to the paper, written in clear and academic language, and concise. No references are included."
+      "rationale": "Score: 4\nRationale: The abstract accurately covers the main problem (septic internal jugular vein - sigmoid sinus thrombosis due to a misplaced central venous catheter), objective (reporting a case), method (presenting the patient's clinical course), results (describing the complications and their management), and conclusion (highlighting the potential severe complications associated with CVC use). The abstract is faithful to the paper, written in clear and academic language, and concise. No references are included."
     },
     {
       "reference": "septic internal jugular vein - sigmoid sinus thrombosis is a rare condition that complicates local and regional infectious inflammatory processes occurring in the head and neck . these include deep ne",
       "submission": "Medical procedures like central venous catheterization carry inherent risks that can lead to adverse patient outcomes. This paper discusses a clinical scenario involving complications from a medical d",
       "true_score": 1,
       "predicted_score": 4,
-      "rationale": "Score: 4\nRationale: The abstract accurately covers the main problem (septic internal jugular vein - sigmoid sinus thrombosis due to a misplaced central venous catheter), objective (reporting a case), method (presenting a case study), results (describing the patient's symptoms, diagnosis, and management), and conclusion (discussing the risks and importance of careful central venous catheterization). It is faithful to the paper, written in clear and academic language, and concise. No references are included."
+      "rationale": "Score: 4\nRationale: The abstract accurately covers the main problem (septic internal jugular vein - sigmoid sinus thrombosis due to a misplaced central venous catheter), objective (reporting a case), method (presenting a case study), results (describing the patient's condition and management), and conclusion (discussing the risks and importance of careful central venous catheterization). It is faithful to the paper, written in clear and academic language, and concise. No references are included."
     },
     {
       "reference": "septic internal jugular vein - sigmoid sinus thrombosis is a rare condition that complicates local and regional infectious inflammatory processes occurring in the head and neck . these include deep ne",
       "submission": "Septic internal jugular vein - sigmoid sinus thrombosis is a well-understood complication, and early diagnosis is typically achieved with standard imaging. We present a case where prompt systemic hepa",
       "true_score": 0,
       "predicted_score": 3,
-      "rationale": "Score: 3\nRationale: The abstract covers the main problem (septic internal jugular vein - sigmoid sinus thrombosis), objective (timely intervention leading to recovery), method (prompt systemic heparinization and targeted antibiotics), and conclusion (prevention of morbidity and mortality). However, it does not specify the results in detail."
+      "rationale": "Score: 3\nRationale: The abstract covers the main problem (septic internal jugular vein - sigmoid sinus thrombosis) and the conclusion (effective treatment with systemic heparinization and antibiotics), but it does not provide specific details about the method or results of the case study. However, it is faithful to the paper's content, clear and concise, and written in an academic style."
     },
     {
       "reference": "areview on the history of mental disorders shows their wide prevalence among human beings always . a glance on statistics reveals that mental disorders and abnormalities are affecting the humans at an",
@@ -193,7 +188,7 @@
       "submission": "University students, especially those in stressful majors like nursing and midwifery, face significant mental health challenges. This study investigated the efficacy of neurolinguistic programming (NL",
       "true_score": 3,
       "predicted_score": 4,
-      "rationale": "Score: 4\nRationale: The abstract covers the main problem, objective, method, results, and conclusion of the paper accurately and concisely. It is grammatically correct, clear, and written in an academic style. No references are included."
+      "rationale": "Score: 4\nRationale: The abstract covers the main problem, objective, method, results, and conclusion of the paper accurately and concisely. It is grammatically correct, clear, coherent, and written in an academic style. No references are included."
     },
     {
       "reference": "areview on the history of mental disorders shows their wide prevalence among human beings always . a glance on statistics reveals that mental disorders and abnormalities are affecting the humans at an",
@@ -207,42 +202,42 @@
       "submission": "Mental health is a critical aspect of well-being, especially for young adults and university students who often face significant stress. The field of neurolinguistic programming (NLP) has emerged as a",
       "true_score": 1,
       "predicted_score": 4,
-      "rationale": "Score: 4\nRationale: The abstract effectively covers the main problem, objective, and potential solution of the paper, while accurately reflecting the content without adding unsupported claims or false results. The language is clear, coherent, and written in an academic style, and the abstract is concise and focused. No references are included."
+      "rationale": "Score: 4\nRationale: The abstract effectively covers the main problem, objective, and potential solution of the paper, while accurately reflecting the content without adding unsupported claims or false results. The language is clear, coherent, and academic, and the abstract is concise and focused. No references are included."
     },
     {
       "reference": "areview on the history of mental disorders shows their wide prevalence among human beings always . a glance on statistics reveals that mental disorders and abnormalities are affecting the humans at an",
       "submission": "The mental health of university students, particularly those in high-stress programs like nursing, is a growing concern. This study aimed to evaluate the effectiveness of neurolinguistic programming (",
       "true_score": 0,
       "predicted_score": 4,
-      "rationale": "Score: 4\nRationale: The abstract covers the main problem, objective, method, results, and conclusion of the paper accurately and concisely. It is grammatically correct, clear, coherent, and written in an academic style. No references are included."
+      "rationale": "Score: 4\nRationale: The abstract covers the main problem, objective, method, results, and conclusion of the paper accurately and concisely. It is grammatically correct, clear, and coherent, and does not include any unsupported claims or false results. No references are included."
     },
     {
       "reference": "primary diffuse leptomeningeal gliomatosis ( pdlg ) is a rare neoplasm with a short survival time of a few months . we report on a 53-year - old male patient who presented with epileptic seizures , ga",
       "submission": "Primary diffuse leptomeningeal gliomatosis (PDLG) is a rare neoplasm characterized by a short survival time and lack of standardized therapeutic approaches. We present a case of a 53-year-old male who",
       "true_score": 4,
       "predicted_score": 4,
-      "rationale": "Score: 4\nRationale: The abstract accurately covers the main problem, objective, method, results, and conclusion of the paper in a clear, concise, and academic manner without any unsupported claims or false results. Additionally, it is grammatically correct and free from unnecessary details or repetition. No references are included."
+      "rationale": "Score: 4\nRationale: The abstract accurately covers the main problem, objective, method, results, and conclusion of the paper in a clear, concise, and academic manner without any unsupported claims or false results. Additionally, it does not include any references."
     },
     {
       "reference": "primary diffuse leptomeningeal gliomatosis ( pdlg ) is a rare neoplasm with a short survival time of a few months . we report on a 53-year - old male patient who presented with epileptic seizures , ga",
       "submission": "Primary diffuse leptomeningeal gliomatosis (PDLG) is a very rare and serious condition, with no standard way to treat it. We tell about a 53-year-old man who had seizures and problems with walking. Do",
       "true_score": 3,
       "predicted_score": 4,
-      "rationale": "Score: 4\nRationale: The abstract accurately covers the main problem, objective, method, results, and conclusion of the paper in a clear and concise manner. It is faithful to the content of the paper and written in an academic style."
+      "rationale": "Score: 4\nRationale: The abstract accurately covers the main problem, objective, method, results, and conclusion of the paper in a clear and concise manner. It is faithful to the content of the paper and written in an academic style. No references are included."
     },
     {
       "reference": "primary diffuse leptomeningeal gliomatosis ( pdlg ) is a rare neoplasm with a short survival time of a few months . we report on a 53-year - old male patient who presented with epileptic seizures , ga",
       "submission": "Primary diffuse leptomeningeal gliomatosis (PDLG) is an uncommon and aggressive form of glioma. This report focuses on a 53-year-old male patient who presented with significant neurological symptoms, ",
       "true_score": 2,
       "predicted_score": 4,
-      "rationale": "Score: 4\nRationale: The abstract accurately covers the main problem (PDLG), objective (diagnosis and treatment), method (diagnostic investigations and treatment regimen), results (confirmation of diagnosis and treatment received), and conclusion (challenges in diagnosing and managing PDLG). It is faithful to the paper, written in clear and academic language, and concise. No references are included."
+      "rationale": "Score: 4\nRationale: The abstract accurately covers the main problem, objective, method, results, and conclusion of the paper in a clear, concise, and academic manner without any unsupported claims or false results. Additionally, it does not include any references."
     },
     {
       "reference": "primary diffuse leptomeningeal gliomatosis ( pdlg ) is a rare neoplasm with a short survival time of a few months . we report on a 53-year - old male patient who presented with epileptic seizures , ga",
       "submission": "Primary diffuse leptomeningeal gliomatosis (PDLG) is a very serious and rare brain condition. Patients often face a difficult prognosis with limited treatment options. This article presents a clinical",
       "true_score": 1,
-      "predicted_score": 0,
-      "rationale": "Score: 3\nRationale: The abstract covers the main problem (PDLG), objective (presenting a clinical case), and results (therapy received by the patient) of the paper, but the conclusion is not explicitly stated.\n\nScore: 5\nRationale: The abstract is faithful to the paper as it accurately reflects the content without adding unsupported claims or false results.\n\nScore: 5\nRationale: The abstract is written in clear, coherent, and academic language, making it easy to understand.\n\nScore: 4\nRationale: The abstract is concise, but it could be more focused by explicitly stating the conclusion.\n\nScore: 0\nRationale: The"
+      "predicted_score": 3,
+      "rationale": "Score: 3\nRationale: The abstract covers the main problem (PDLG) and the patient's case, but it could be more specific about the objective, method, results, and conclusion. It is faithful to the paper, grammatically correct, clear, and coherent. However, it could be more concise and focused."
     },
     {
       "reference": "primary diffuse leptomeningeal gliomatosis ( pdlg ) is a rare neoplasm with a short survival time of a few months . we report on a 53-year - old male patient who presented with epileptic seizures , ga",
@@ -256,35 +251,35 @@
       "submission": "The fields of pharmacogenetics and pharmacogenomics show increasing promise for the clinical application of genetic data to prevent adverse drug reactions. Specific screening tests can predict which a",
       "true_score": 4,
       "predicted_score": 3,
-      "rationale": "Score: 3\nRationale: The abstract covers the main problem, objective, and results of the paper, but the method and conclusion are not explicitly mentioned. However, the language is clear, concise, and grammatically correct."
+      "rationale": "Score: 3\nRationale: The abstract covers the main problem, objective, and results of the paper, but the method and conclusion are not explicitly mentioned."
     },
     {
       "reference": "there is increasing evidence of a clear genetic link between the phenotypic characteristics of dogs and adverse drug reactions . the fields of pharmacogenetics and pharmacogenomics have become increas",
       "submission": "Pharmacogenetics is a promising field for preventing adverse drug reactions in animals through the clinical application of genetic data. Understanding specific genetic variations can help predict an a",
       "true_score": 3,
       "predicted_score": 4,
-      "rationale": "Score: 4\nRationale: The abstract covers the main problem, objective, method, results, and conclusion of the paper accurately and concisely. It is grammatically correct, clear, and written in an academic style. There are no references or citations included."
+      "rationale": "Score: 4\nRationale: The abstract accurately covers the main problem, objective, method, results, and conclusion of the paper, and is written in clear, concise, and academic language. It does not include any unsupported claims, false results, or unnecessary details, nor does it contain any citations or references."
     },
     {
       "reference": "there is increasing evidence of a clear genetic link between the phenotypic characteristics of dogs and adverse drug reactions . the fields of pharmacogenetics and pharmacogenomics have become increas",
       "submission": "The application of pharmacogenetics holds significant potential for preventing adverse drug reactions in veterinary medicine by leveraging genetic information. Understanding how genetic factors influe",
       "true_score": 2,
       "predicted_score": 4,
-      "rationale": "Score: 4\nRationale: The abstract covers the main problem, objective, method, results, and conclusion of the paper in a clear and concise manner. It accurately reflects the content of the paper without adding unsupported claims or false results. The language quality is excellent, and the abstract is written in an academic style."
+      "rationale": "Score: 4\nRationale: The abstract covers the main problem, objective, method, results, and conclusion of the paper accurately and concisely. It is grammatically correct, clear, and written in an academic style. There are no references or citations included."
     },
     {
       "reference": "there is increasing evidence of a clear genetic link between the phenotypic characteristics of dogs and adverse drug reactions . the fields of pharmacogenetics and pharmacogenomics have become increas",
       "submission": "Pharmacogenetics is an emerging field focused on understanding how an individual's genetic makeup affects their response to drugs. This research area is particularly vital in veterinary medicine to pr",
       "true_score": 1,
       "predicted_score": 4,
-      "rationale": "Score: 4\nRationale: The abstract accurately covers the main problem, objective, and conclusion of the paper, and is written in clear, concise, and academic language, without any unsupported claims or unnecessary details. It also does not include any references."
+      "rationale": "Score: 4\nRationale: The abstract accurately covers the main problem, objective, and conclusion of the paper, and is written in clear, concise, and academic language without any unsupported claims or unnecessary details. It also does not include any references."
     },
     {
       "reference": "there is increasing evidence of a clear genetic link between the phenotypic characteristics of dogs and adverse drug reactions . the fields of pharmacogenetics and pharmacogenomics have become increas",
       "submission": "This pioneering study successfully discovered novel, highly penetrant mdr-1 gene mutations in Uruguayan Cimarron and German Shepherd dogs, which are directly responsible for all cases of ivermectin-in",
       "true_score": 0,
       "predicted_score": 3,
-      "rationale": "Score: 3\nRationale: The abstract covers the main problem, objective, and results of the paper, but it goes beyond the content of the provided abstract by making unsupported claims about a genetic test and its ability to completely eradicate the risk of ivermectin toxicity."
+      "rationale": "Score: 3\nRationale: The abstract covers the main problem, objective, and results of the paper, but it goes beyond the information provided in the original abstract by making unsupported claims about a genetic test and its ability to completely eradicate the risk of ivermectin toxicity."
     },
     {
       "reference": "despite advancements in modern medical science and the health management industry , the \n incidence of cerebral palsy ( cp ) continues to rise1 . the most common features of cp are decreased muscle st",
@@ -305,21 +300,21 @@
       "submission": "Cerebral palsy (CP) often leads to postural impairments. This study examined the differences in sitting posture between children with typical development (TD) and those with CP. Pressure distribution ",
       "true_score": 2,
       "predicted_score": 4,
-      "rationale": "Score: 4\nRationale: The abstract covers the main problem (CP leading to postural impairments), objective (investigating differences in sitting posture between TD and CP children), method (using a force platform system), results (observable differences in pressure patterns), and conclusion (distinct sitting characteristics for CP children). It is faithful to the paper, written in clear academic language, and concise. No references are included."
+      "rationale": "Score: 4\nRationale: The abstract accurately covers the main problem, objective, method, results, and conclusion of the paper in a clear and concise manner. It is faithful to the content of the study and written in an academic style. No references are included."
     },
     {
       "reference": "despite advancements in modern medical science and the health management industry , the \n incidence of cerebral palsy ( cp ) continues to rise1 . the most common features of cp are decreased muscle st",
       "submission": "Cerebral palsy (CP) is a condition that impacts motor control and posture, making independent sitting a significant developmental challenge for affected children. Understanding postural control is cru",
       "true_score": 1,
       "predicted_score": 4,
-      "rationale": "Score: 4\nRationale: The abstract accurately covers the main problem, objective, and conclusion of the paper, and is written in clear, concise, and academic language. It does not include any unsupported claims, false results, or unnecessary details. Additionally, it does not contain any references."
+      "rationale": "Score: 4\nRationale: The abstract accurately covers the main problem, objective, and conclusion of the paper, and is written in clear, academic language without unnecessary details or repetition. It does not include any unsupported claims, false results, or references."
     },
     {
       "reference": "despite advancements in modern medical science and the health management industry , the \n incidence of cerebral palsy ( cp ) continues to rise1 . the most common features of cp are decreased muscle st",
       "submission": "This groundbreaking study utilized electromyography (EMG) to analyze muscle activity patterns during bipedal standing in 20 young adults with cerebral palsy and a control group. Surprisingly, the rese",
       "true_score": 0,
       "predicted_score": 2,
-      "rationale": "Score: 5\nRationale: The abstract accurately reflects the main problem, objective, method, results, and conclusion of the paper in a clear, concise, and academic manner without any unsupported claims or false results. Additionally, it is grammatically correct and does not include any references."
+      "rationale": "Score: 5\nRationale: The abstract accurately reflects the main problem, objective, method, results, and conclusion of the paper in a clear, concise, and grammatically correct manner. It does not include any unsupported claims, false results, or unnecessary details. Additionally, it does not include any references."
     },
     {
       "reference": "lepidoptera include agricultural pests that , through feeding and other activities , negatively affect stored grains , food and fiber crops [ 2 , 3 ] . since a single lepidoptera adult can produce hun",
@@ -333,28 +328,73 @@
       "submission": "Lepidopteran insects are major agricultural pests, and current pesticides have harmful off-target effects on beneficial arthropods like pollinators. Developing specific pest control methods is essenti",
       "true_score": 3,
       "predicted_score": 4,
-      "rationale": "Score: 4\nRationale: The abstract covers the main problem, objective, and proposed methodology of the paper, and briefly mentions the potential results and conclusion. It is faithful to the paper content, written in clear and academic language, and concise without unnecessary details or repetition. No references are included."
+      "rationale": "Score: 4\nRationale: The abstract covers the main problem, objective, and proposed methodology of the paper, while also mentioning the potential results and conclusion. It is faithful to the paper content, written in clear and academic language, and concise without unnecessary details or repetition. No references are included."
     },
     {
       "reference": "lepidoptera include agricultural pests that , through feeding and other activities , negatively affect stored grains , food and fiber crops [ 2 , 3 ] . since a single lepidoptera adult can produce hun",
       "submission": "Agricultural pests, especially lepidopterans, cause significant crop damage and economic losses globally. Existing pest control methods, relying heavily on broad-spectrum insecticides, often harm non-",
       "true_score": 2,
       "predicted_score": 4,
-      "rationale": "Score: 4\nRationale: The abstract effectively covers the problem of crop damage caused by agricultural pests, the objective of investigating their immune systems for novel pest control strategies, and the potential benefits of reducing harm to beneficial insects and the environment. It is faithful to the paper's content, written in clear and academic language, and concise without unnecessary details or repetition. No references are included."
+      "rationale": "Score: 4\nRationale: The abstract effectively covers the main problem, objective, and proposed solution of the paper, while accurately reflecting the content without adding unsupported claims or false results. The language is clear, concise, and written in an academic style. No references are included."
     },
     {
       "reference": "lepidoptera include agricultural pests that , through feeding and other activities , negatively affect stored grains , food and fiber crops [ 2 , 3 ] . since a single lepidoptera adult can produce hun",
       "submission": "Insects pose a significant threat to agriculture worldwide, leading to substantial crop losses. Current pest management techniques have drawbacks, impacting the environment and other organisms. Unders",
       "true_score": 1,
       "predicted_score": 4,
-      "rationale": "Score: 4\nRationale: The abstract effectively covers the problem of insect pests in agriculture, the objective of investigating insect immunity, and the potential for new pest management strategies. It accurately reflects the content of the paper without adding unsupported claims or false results. The language is clear, coherent, and academic, and the abstract is concise and focused. No references are included."
+      "rationale": "Score: 4\nRationale: The abstract effectively covers the main problem, objective, and potential contribution of the research, while accurately reflecting the content of the paper. The language is clear, concise, and academic, and there are no references or citations included."
     },
     {
       "reference": "lepidoptera include agricultural pests that , through feeding and other activities , negatively affect stored grains , food and fiber crops [ 2 , 3 ] . since a single lepidoptera adult can produce hun",
       "submission": "This paper demonstrates that aliens are responsible for crop circles and that these patterns are complex algorithms designed to communicate with lepidopteran insects. We found that feeding lepidoptera",
       "true_score": 0,
       "predicted_score": 0,
-      "rationale": "Score: 0\nRationale: The abstract does not cover the main problem, objective, method, results, and conclusion of a scientific paper. It introduces unsupported claims and ideas not found in the given rubric."
+      "rationale": "Score: 0\nRationale: The abstract does not cover the main problem, objective, method, results, and conclusion of a scientific paper. It introduces an unrelated topic about aliens and crop circles, and makes unsupported claims about enhancing insect immunity and interstellar communications."
     }
-  ]
+  ],
+  "metrics": {
+    "accuracy": 0.3,
+    "macro_f1": 0.22659574468085103,
+    "mae": 1.4,
+    "rmse": 1.8110770276274832,
+    "qwk": 0.41007194244604317,
+    "cohen_kappa_linear": 0.125,
+    "confusion_matrix": [
+      [
+        6,
+        0,
+        1,
+        2,
+        1
+      ],
+      [
+        0,
+        0,
+        0,
+        3,
+        7
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        10
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        10
+      ],
+      [
+        0,
+        0,
+        0,
+        1,
+        9
+      ]
+    ]
+  }
 }

@@ -351,5 +351,50 @@
       "predicted_score": 0,
       "rationale": "Score: 0\nRationale: This abstract is completely fabricated and unfaithful to the paper. It introduces entirely new concepts, such as aliens, quantum entanglement, and cosmic threats, which are not present in the original content. It also claims specific dietary supplements can solve global warming, which is not supported by the paper. The abstract is also very vague and lacks specific details about the study, such as the species of lepidopteran caterpillars, the specific immune response measured, or the methodology used to enhance their immune response. It is essentially a random collection of unsupported claims and ideas."
     }
-  ]
+  ],
+  "metrics": {
+    "accuracy": 0.52,
+    "macro_f1": 0.4519925379058506,
+    "mae": 0.72,
+    "rmse": 1.1661903789690602,
+    "qwk": 0.6091954022988506,
+    "cohen_kappa_linear": 0.4,
+    "confusion_matrix": [
+      [
+        9,
+        1,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        10,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        5,
+        2,
+        3,
+        0
+      ],
+      [
+        0,
+        4,
+        1,
+        5,
+        0
+      ],
+      [
+        0,
+        4,
+        0,
+        6,
+        0
+      ]
+    ]
+  }
 }
