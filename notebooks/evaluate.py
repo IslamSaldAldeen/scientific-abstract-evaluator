@@ -14,16 +14,16 @@ def evaluate(predictions_file):
         data = json.load(f)
 
     ground_truth = [entry["true_score"] for entry in data["predictions"]]
-    predictions = [entry["predicted_score"] for entry in data["predictions"]]
+    predictions  = [entry["predicted_score"] for entry in data["predictions"]]
 
     # Metrics
-    acc = accuracy_score(ground_truth, predictions)
-    f1 = f1_score(ground_truth, predictions, average="macro")
-    mae = mean_absolute_error(ground_truth, predictions)
+    acc  = accuracy_score(ground_truth, predictions)
+    f1   = f1_score(ground_truth, predictions, average="macro")
+    mae  = mean_absolute_error(ground_truth, predictions)
     rmse = np.sqrt(np.mean((np.array(ground_truth) - np.array(predictions)) ** 2))
-    qwk = cohen_kappa_score(ground_truth, predictions, weights="quadratic")
-    cks = cohen_kappa_score(ground_truth, predictions)
-    cm = confusion_matrix(ground_truth, predictions, labels=[0, 1, 2, 3, 4])
+    qwk  = cohen_kappa_score(ground_truth, predictions, weights="quadratic")
+    cks  = cohen_kappa_score(ground_truth, predictions)
+    cm   = confusion_matrix(ground_truth, predictions, labels=[0, 1, 2, 3, 4])
 
     # Print results
     print("=" * 45)
@@ -41,16 +41,23 @@ def evaluate(predictions_file):
     for i, row in enumerate(cm):
         print(f"  {i}  {'  '.join(str(v).rjust(3) for v in row)}")
 
-    # Save metrics
+    # Save metrics back into the predictions file
     metrics = {
-        "accuracy": acc,
-        "macro_f1": f1,
-        "mae": mae,
-        "rmse": rmse,
-        "qwk": qwk,
-        "cohen_kappa_linear": cks,
-        "confusion_matrix": cm.tolist()
+        "accuracy":            acc,
+        "macro_f1":            f1,
+        "mae":                 mae,
+        "rmse":                rmse,
+        "qwk":                 qwk,
+        "cohen_kappa_linear":  cks,
+        "confusion_matrix":    cm.tolist()
     }
+
+    data["metrics"] = metrics
+
+    with open(predictions_file, "w") as f:
+        json.dump(data, f, indent=2)
+
+    print(f"\nMetrics saved to {predictions_file}")
 
     return metrics
 
