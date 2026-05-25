@@ -1,0 +1,355 @@
+{
+  "model": "Mistral-7B-Instruct-v0.2 (fine-tuned)",
+  "predictions": [
+    {
+      "reference": "lipid apheresis provides a safe and effective means of treating patients with severe hyperlipidemia . it functions by first separating plasma from blood cells with a cell separator and then using eith",
+      "submission": "Lipid apheresis effectively treats patients with severe hyperlipidemia by significantly reducing low-density lipoprotein cholesterol (LDL-C). This study investigated the effects of apheresis on lipid ",
+      "true_score": 4,
+      "predicted_score": 3,
+      "rationale": "Score: 3\nRationale: This abstract is mostly good but misses a minor detail. It correctly identifies the main problem, objective, method, results, and conclusion of the paper. However, it slightly underestimates the number of patients. The paper states that 11 patients were identified, but the abstract says 'active lipid apheresis patients' were identified, which could be a subset of 11. The abstract also correctly identifies the main finding that lipid apheresis significantly reduces LDL-C and may reduce cardiac events. However, it slightly overstates the reduction in LDL-C (71.9% instead of 'marked reduction') and the number of card"
+    },
+    {
+      "reference": "lipid apheresis provides a safe and effective means of treating patients with severe hyperlipidemia . it functions by first separating plasma from blood cells with a cell separator and then using eith",
+      "submission": "Lipid apheresis is used to treat patients with severe hyperlipidemia by reducing low-density lipoprotein cholesterol (LDL-C). This study examines the effect of apheresis on the lipid panel and cardiac",
+      "true_score": 3,
+      "predicted_score": 3,
+      "rationale": "Score: 3\nRationale: This abstract is mostly good but misses a minor detail. It correctly identifies the main problem, objective, method, and results. However, it slightly underestimates the number of patients. The paper reported 11 patients undergoing apheresis, but the abstract says 'active lipid apheresis patients at the minneapolis heart institute' without specifying a number. This is a minor detail, but it's worth noting for completeness. The abstract also correctly identifies the conclusion, which is that lipid apheresis significantly reduces LDL-C and may reduce the recurrence of cardiac events. The abstract is mostly faithful to the paper, but it"
+    },
+    {
+      "reference": "lipid apheresis provides a safe and effective means of treating patients with severe hyperlipidemia . it functions by first separating plasma from blood cells with a cell separator and then using eith",
+      "submission": "Lipid apheresis is a treatment for severe hyperlipidemia that aims to reduce low-density lipoprotein cholesterol (LDL-C). This study investigated the general impact of apheresis on patients' lipid pro",
+      "true_score": 2,
+      "predicted_score": 1,
+      "rationale": "Score: 1\nRationale: This abstract is very vague and misses most important parts of the paper. It correctly identifies lipid apheresis as a treatment for severe hyperlipidemia and that it aims to reduce LDL-C. However, it fails to mention the specific type of apheresis (dextran sulphate precipitation), the exact patient population (FH patients), the specific lipid parameters measured (LDL, HDL, triglycerides), the specific cardiac events (coronary artery disease, myocardial infarction, stroke), the specific statistical methods (ANOVA, regression), and the specific conclusions (lipid ap"
+    },
+    {
+      "reference": "lipid apheresis provides a safe and effective means of treating patients with severe hyperlipidemia . it functions by first separating plasma from blood cells with a cell separator and then using eith",
+      "submission": "Many people suffer from high cholesterol, which can lead to serious heart problems. This research looked into a special treatment called lipid apheresis. We studied a group of patients who were receiv",
+      "true_score": 1,
+      "predicted_score": 1,
+      "rationale": "Score: 1\nRationale: This abstract is very vague and generic, only loosely connected to the specific study. It correctly identifies the general topic of high cholesterol and lipid apheresis, but it misses most of the specific details. It does not mention FH, the specific patient population, the specific type of apheresis, the specific methodology, the specific results, or the specific conclusion. It also adds a general claim about 'patient experiences' without specifying the study's survey. The abstract is more like a generic introduction to the topic rather than a summary of the specific research."
+    },
+    {
+      "reference": "lipid apheresis provides a safe and effective means of treating patients with severe hyperlipidemia . it functions by first separating plasma from blood cells with a cell separator and then using eith",
+      "submission": "The ancient practice of bloodletting, as documented in medieval texts, has been rediscovered as the ultimate cure for all ailments, including hyperlipidemia. Our study utilized mystical incantations a",
+      "true_score": 0,
+      "predicted_score": 0,
+      "rationale": "Score: 0\nRationale: This abstract is completely fabricated and does not accurately reflect the paper. It is a nonsensical, unfaithful, and misleading summary that contradicts the scientific methodology, findings, and conclusions of the original research. It is a work of fiction that is not grounded in reality."
+    },
+    {
+      "reference": "high phosphorus ( p ) intake is known as one of the risk factors for impaired bone health . several researchers have investigated the adverse effects of a high p diet on bone metabolism . in human adu",
+      "submission": "This study investigated the effects of a high phosphorus (P) diet on bone metabolism-related gene expression in young and aged mice. Twelve- and 80-week-old ddy male mice were fed either a control die",
+      "true_score": 4,
+      "predicted_score": 3,
+      "rationale": "Score: 3\nRationale: This abstract is mostly good but misses a minor detail. It correctly identifies the main problem, objective, method, results, and conclusion of the paper. However, it omits a minor detail about the specific age of the mice when the PTH and RANKL/OPG mRNA ratio were measured. The paper reported that these values were measured in 12-week-old mice for the control diet and in 80-week-old mice for the high P diet, but the abstract only mentions 'young' and 'aged' mice without specifying their exact ages. This detail is not crucial for understanding the main findings, but it"
+    },
+    {
+      "reference": "high phosphorus ( p ) intake is known as one of the risk factors for impaired bone health . several researchers have investigated the adverse effects of a high p diet on bone metabolism . in human adu",
+      "submission": "The impact of a high phosphorus (P) diet on bone metabolism was examined in young and aged mice. Twelve-week-old and 80-week-old ddy male mice were fed either a control diet or a high P diet for four ",
+      "true_score": 3,
+      "predicted_score": 3,
+      "rationale": "Score: 3\nRationale: This abstract is mostly good but misses a minor detail. It correctly identifies the main problem, objective, method, results, and conclusion of the paper. However, it omits a minor detail from the results section. The abstract correctly states that a high P diet led to an increase in RANKL mRNA in the femur across all age groups. However, it fails to mention that this increase was significant only in the aged mice. This detail is important because it highlights the age-specific effect of the high P diet on RANKL expression. The abstract is mostly good because it accurately conveys the main findings of the paper, but it is slightly less comprehensive than the paper"
+    },
+    {
+      "reference": "high phosphorus ( p ) intake is known as one of the risk factors for impaired bone health . several researchers have investigated the adverse effects of a high p diet on bone metabolism . in human adu",
+      "submission": "This study investigated how a high phosphorus (P) diet affects bone health in mice. Young and aged mice were fed diets with either control or high P levels for a period of time. The study measured var",
+      "true_score": 2,
+      "predicted_score": 3,
+      "rationale": "Score: 3\nRationale: This abstract is mostly good but misses a minor detail. It correctly identifies the main problem, objective, method, and general results. However, it slightly understates the specific findings by not mentioning that the high P diet led to a 2.5-fold increase in RANKL mRNA expression in the femur. This detail is important because it directly connects the PTH increase to the RANKL increase, showing that PTH is the primary mediator. The abstract also correctly identifies the conclusion that high P intake has a detrimental effect on bone metabolism. Overall, this abstract is very good but could be slightly improved by adding the specific R"
+    },
+    {
+      "reference": "high phosphorus ( p ) intake is known as one of the risk factors for impaired bone health . several researchers have investigated the adverse effects of a high p diet on bone metabolism . in human adu",
+      "submission": "Dietary factors play a crucial role in maintaining bone health throughout life. This study explores the relationship between phosphorus intake and bone metabolism. High levels of phosphorus in the die",
+      "true_score": 1,
+      "predicted_score": 1,
+      "rationale": "Score: 1\nRationale: This abstract is very vague and generic, only loosely connected to the specific paper. It correctly identifies the general topic of phosphorus and bone health, but misses most of the specific details. It mentions 'researchers investigated different dietary interventions' instead of the specific high-phosphorus diet, and 'the findings suggest that altering phosphorus intake can influence hormonal balance and cellular processes related to bone remodeling' instead of the specific PTH and RANKL findings. It also omits the specific age groups and mouse strains, the specific P levels in the diets, and the specific measurements of bone density and strength. It"
+    },
+    {
+      "reference": "high phosphorus ( p ) intake is known as one of the risk factors for impaired bone health . several researchers have investigated the adverse effects of a high p diet on bone metabolism . in human adu",
+      "submission": "This study demonstrates that a high phosphorus (P) diet significantly *improves* bone strength and density in aging mice by *reducing* parathyroid hormone (PTH) levels. We divided 12-week-old mice int",
+      "true_score": 0,
+      "predicted_score": 0,
+      "rationale": "Score: 0\nRationale: This abstract is completely fabricated and contradicts the paper's findings. It claims that a high P diet *improves* bone strength and density by *reducing* PTH, *decreasing* RANKL expression, and *promoting bone formation*. However, the paper actually shows that a high P diet *decreases* bone strength and density by *increasing* PTH and *increasing* RANKL expression, *suppressing* osteoblast activity, and *enhancing* osteoclastic bone resorption. The abstract also claims that this is a simple and effective strategy to combat osteoporosis,"
+    },
+    {
+      "reference": "ectopic kidney is a relatively rare renal anomaly however , an endourologist does encounter stone disease in an ectopic kidney occasionally . factors such as anomalous blood vessels and tortuous urete",
+      "submission": "Management of stone disease in ectopic kidneys presents unique challenges. While laparoscopy or conventional ultrasound-guided percutaneous nephrolithotomy and retrograde intra-renal surgery are commo",
+      "true_score": 4,
+      "predicted_score": 3,
+      "rationale": "Score: 3\nRationale: This abstract is mostly good but misses a minor detail. It correctly identifies the main problem, objective, method, and results. However, it slightly understates the patient count, stating 'two male patients' instead of 'two patients' (one male, one female). The conclusion is also slightly weakened by this detail, but it still accurately summarizes the main findings. Overall, this abstract is very good, but minor details should be consistent with the paper."
+    },
+    {
+      "reference": "ectopic kidney is a relatively rare renal anomaly however , an endourologist does encounter stone disease in an ectopic kidney occasionally . factors such as anomalous blood vessels and tortuous urete",
+      "submission": "Stone disease in ectopic kidneys can be complex to manage due to anatomical variations. Current techniques often include laparoscopy or PCNL. We describe the application of ultrasound-guided MicroPerc",
+      "true_score": 3,
+      "predicted_score": 3,
+      "rationale": "Score: 3\nRationale: This abstract is mostly good but misses a minor detail. It correctly identifies the main problem, objective, method, and results. However, it omits the specific mention of the 'micro-PCNL' procedure being a 'new' technique, which is explicitly stated in the paper. The abstract is otherwise accurate and clear."
+    },
+    {
+      "reference": "ectopic kidney is a relatively rare renal anomaly however , an endourologist does encounter stone disease in an ectopic kidney occasionally . factors such as anomalous blood vessels and tortuous urete",
+      "submission": "Ectopic kidneys are a rare renal anomaly, and managing stone disease within them poses difficulties. Traditional approaches like percutaneous nephrolithotomy (PCNL) are often utilized. This report det",
+      "true_score": 2,
+      "predicted_score": 3,
+      "rationale": "Score: 3\nRationale: This abstract is mostly good but misses a minor detail. It correctly identifies the problem, objective, method, and results. However, it omits the specific mention of 'micro-PCNL' as 'MicroPerc', which is a minor discrepancy. The abstract is still very good and accurately conveys the main idea of the paper."
+    },
+    {
+      "reference": "ectopic kidney is a relatively rare renal anomaly however , an endourologist does encounter stone disease in an ectopic kidney occasionally . factors such as anomalous blood vessels and tortuous urete",
+      "submission": "Renal calculi are common urological conditions that often require surgical intervention. Management of kidney stones depends on their size, location, and patient anatomy. Percutaneous nephrolithotomy ",
+      "true_score": 1,
+      "predicted_score": 1,
+      "rationale": "Score: 1\nRationale: This abstract is very vague and generic, only loosely connected to the specific paper. It discusses a general problem, a common surgical method, and a general goal, but it does not mention the specific type of kidney stones, the specific patient conditions, the specific procedure details, or the specific results. It also does not mention the specific type of kidney (ectopic) or the specific location of the stone (pelvic kidney). The abstract is very generic and could apply to many different types of kidney stones and treatments. It is a very weak summary that could easily be applied to many different papers."
+    },
+    {
+      "reference": "ectopic kidney is a relatively rare renal anomaly however , an endourologist does encounter stone disease in an ectopic kidney occasionally . factors such as anomalous blood vessels and tortuous urete",
+      "submission": "The treatment of renal calculi in ectopic kidneys often poses severe challenges, leading to a high rate of complications. This study compared micro-percutaneous nephrolithotomy (MicroPerc) with tradit",
+      "true_score": 0,
+      "predicted_score": 0,
+      "rationale": "Score: 0\nRationale: This abstract is completely fabricated and does not accurately reflect the paper. It introduces a cohort of 50 patients, a comparison of MicroPerc with open surgery, and specific results and conclusions that are not found in the original paper. The paper only discusses two patients and their individual experiences with MicroPerc."
+    },
+    {
+      "reference": "breast cancer is the most common cancer among american women , except for skin cancers . the chance of developing invasive breast cancer at some time in a woman 's life is a little less than 12% . it ",
+      "submission": "Breast cancer remains a significant cause of mortality in women globally. Toll-like receptors (TLRs), widely expressed on tumor cells, play crucial roles in cancer initiation and progression, thereby ",
+      "true_score": 4,
+      "predicted_score": 1,
+      "rationale": "Score: 1\nRationale: This abstract is very vague and generic. It correctly identifies breast cancer as a significant cause of mortality and mentions Toll-like receptors (TLRs) as important for cancer progression. However, it misses most of the specific details. It does not mention the exact type of breast cancer, the specific TLRs, or the exact cell types involved. It also misses the specific mechanism of TLRs in promoting inflammation and the development of mammary tumors. The abstract is very generic and could apply to many different types of cancer. It also does not mention the specific conclusion or the specific methodology. It is very weak and generic."
+    },
+    {
+      "reference": "breast cancer is the most common cancer among american women , except for skin cancers . the chance of developing invasive breast cancer at some time in a woman 's life is a little less than 12% . it ",
+      "submission": "Breast cancer continues to be a major health challenge for women worldwide. Toll-like receptors (TLRs), found on tumor cells, are important mediators in cancer progression and are potential targets fo",
+      "true_score": 3,
+      "predicted_score": 1,
+      "rationale": "Score: 1\nRationale: This abstract is very vague and generic. It correctly identifies breast cancer as a major health challenge and mentions TLRs as a potential target for treatment. However, it misses most of the specific details. It does not mention the exact type of breast cancer, the specific TLRs, the exact methodology, the specific results, or the exact conclusion. It also adds an unsupported claim that TLRs contribute to inflammation and enhance cell survival in the tumor microenvironment, which is not directly stated in the paper. The abstract is very generic and could apply to many different types of cancer or TLRs. It is also very vague about the specific TLRs involved"
+    },
+    {
+      "reference": "breast cancer is the most common cancer among american women , except for skin cancers . the chance of developing invasive breast cancer at some time in a woman 's life is a little less than 12% . it ",
+      "submission": "Breast cancer remains a significant cause of death, and understanding its progression is vital. The tumor microenvironment, including immune cells, plays a crucial role in tumor survival and growth. T",
+      "true_score": 2,
+      "predicted_score": 1,
+      "rationale": "Score: 1\nRationale: This abstract is very vague and generic, only loosely connected to the specific paper. It correctly identifies breast cancer as a significant problem, mentions the tumor microenvironment and immune cells, and acknowledges the general connection between inflammation and cancer. However, it misses most of the specific details, including the exact type of breast cancer, the specific genetic changes, the exact mechanisms of immune evasion, and the specific therapeutic strategies. It also lacks the specific citations and references. This abstract is more like a general introduction to the topic rather than a summary of a specific research paper."
+    },
+    {
+      "reference": "breast cancer is the most common cancer among american women , except for skin cancers . the chance of developing invasive breast cancer at some time in a woman 's life is a little less than 12% . it ",
+      "submission": "Cancer is a serious global health issue, and research into its causes and treatments is ongoing. The body's immune system is important in health and disease. Scientists are working to understand how t",
+      "true_score": 1,
+      "predicted_score": 1,
+      "rationale": "Score: 1\nRationale: This abstract is very vague and generic, only loosely connected to the specific paper. It correctly identifies cancer as a health issue and the immune system as relevant, but it misses most of the specific details. It does not mention breast cancer, the specific type of cancer studied, nor does it mention the specific immune system cells or mechanisms involved. It also does not mention the specific research methodology, results, or conclusion of the paper. Instead, it is a very general statement about cancer and the immune system."
+    },
+    {
+      "reference": "breast cancer is the most common cancer among american women , except for skin cancers . the chance of developing invasive breast cancer at some time in a woman 's life is a little less than 12% . it ",
+      "submission": "This study conclusively demonstrates that activating specific Toll-like receptors (TLRs) with a newly developed compound, 'ImmunoBoost,' offers a universal cure for all metastatic cancers, not just br",
+      "true_score": 0,
+      "predicted_score": 0,
+      "rationale": "Score: 0\nRationale: This abstract is completely fabricated and does not accurately reflect the paper. It makes unsupported claims, such as 'universal cure for all metastatic cancers' and 'revolutionary breakthrough,' and introduces a specific compound ('ImmunoBoost') and a timeline for its availability that are not found in the paper. The paper discusses the general concept of immune system activation and its potential for cancer treatment, but it does not present a specific compound, clinical trial results, or a definitive cure."
+    },
+    {
+      "reference": "septic internal jugular vein - sigmoid sinus thrombosis is a rare condition that complicates local and regional infectious inflammatory processes occurring in the head and neck . these include deep ne",
+      "submission": "Septic internal jugular vein - sigmoid sinus thrombosis (IJV-SST) associated with a malpositioned central venous catheter is a rare and potentially life-threatening condition. Early diagnosis and prom",
+      "true_score": 4,
+      "predicted_score": 1,
+      "rationale": "Score: 1\nRationale: This abstract is very vague and generic, only loosely connected to the specific case report. It correctly identifies the general topic of IJV-SST and the potential for catheter-related complications, but it misses most of the specific details of the case. It does not mention the patient's age, sex, or specific symptoms. It does not mention the specific type of catheter or the exact location of the thrombosis. It does not mention the specific treatment approach or the patient's outcome. It is more like a general introduction to the topic rather than a summary of a specific case report."
+    },
+    {
+      "reference": "septic internal jugular vein - sigmoid sinus thrombosis is a rare condition that complicates local and regional infectious inflammatory processes occurring in the head and neck . these include deep ne",
+      "submission": "Septic internal jugular vein-sigmoid sinus thrombosis (IJV-SST) is a rare and serious complication, often associated with local infections or procedures like central venous catheterization. It require",
+      "true_score": 3,
+      "predicted_score": 1,
+      "rationale": "Score: 1\nRationale: This abstract is very vague and generic, only loosely connected to the specific case report. It correctly identifies IJV-SST as a complication of CVC, but it misses most of the important details. It does not mention the patient's age, sex, or specific symptoms. It does not mention the type of CVC or the specific cause of the thrombosis (malpositioned catheter tip). It does not mention the specific treatments or outcomes. It is more like a general statement about the general risk of IJV-SST from CVC."
+    },
+    {
+      "reference": "septic internal jugular vein - sigmoid sinus thrombosis is a rare condition that complicates local and regional infectious inflammatory processes occurring in the head and neck . these include deep ne",
+      "submission": "Central venous catheterization (CVC) can lead to various complications, including rare but serious thrombotic and septic events. This report details a case where a misplaced central venous catheter wa",
+      "true_score": 2,
+      "predicted_score": 1,
+      "rationale": "Score: 1\nRationale: This abstract is very vague and misses most important parts of the paper. It correctly identifies CVC as a risk for thrombosis, but it does not mention the specific type of thrombosis (internal jugular vein - sigmoid sinus), the patient's age, the specific cause of the thrombosis (misplaced catheter), the patient's initial condition (subarachnoid hemorrhage), the specific treatments (antibiotics, heparinization), or the patient's outcome (death). It also incorrectly states that the patient had a 'brain injury' instead of a 'br"
+    },
+    {
+      "reference": "septic internal jugular vein - sigmoid sinus thrombosis is a rare condition that complicates local and regional infectious inflammatory processes occurring in the head and neck . these include deep ne",
+      "submission": "Medical procedures like central venous catheterization carry inherent risks that can lead to adverse patient outcomes. This paper discusses a clinical scenario involving complications from a medical d",
+      "true_score": 1,
+      "predicted_score": 1,
+      "rationale": "Score: 1\nRationale: This abstract is very vague and generic, only loosely connected to the specific case report. It discusses 'medical procedures' and 'complications' in general, without mentioning 'septic internal jugular vein - sigmoid sinus thrombosis' or 'central venous catheterization' specifically. It also lacks details like 'a 52-year-old woman', 'subarachnoid hemorrhage', 'misplaced central venous catheter', 'hemorrhagic transformation', 'staphylococcus epidermidis and methicillin-resistant staphyloc"
+    },
+    {
+      "reference": "septic internal jugular vein - sigmoid sinus thrombosis is a rare condition that complicates local and regional infectious inflammatory processes occurring in the head and neck . these include deep ne",
+      "submission": "Septic internal jugular vein - sigmoid sinus thrombosis is a well-understood complication, and early diagnosis is typically achieved with standard imaging. We present a case where prompt systemic hepa",
+      "true_score": 0,
+      "predicted_score": 0,
+      "rationale": "Score: 0\nRationale: This abstract is completely fabricated and does not accurately reflect the paper. It claims that the patient fully recovered, that heparinization was effective, and that established protocols were successful. However, the paper clearly states that the patient died from pneumonia, that heparinization was not started due to hemorrhagic transformation, and that the patient's death was a result of septic emboli. This abstract is a significant departure from reality."
+    },
+    {
+      "reference": "areview on the history of mental disorders shows their wide prevalence among human beings always . a glance on statistics reveals that mental disorders and abnormalities are affecting the humans at an",
+      "submission": "The increasing prevalence of mental disorders, especially among university students, with nursing and midwifery students facing significant stress, highlights a critical concern. This study aimed to i",
+      "true_score": 4,
+      "predicted_score": 3,
+      "rationale": "Score: 3\nRationale: This abstract is mostly good but misses a minor detail. It correctly identifies the main problem, objective, method, results, and conclusion of the paper. However, it slightly understates the specificity of the NLP training. The paper states that the NLP training was delivered in five 120-minute sessions, but the abstract only mentions 'NLP training'. This difference is minor and doesn't significantly alter the overall understanding of the study."
+    },
+    {
+      "reference": "areview on the history of mental disorders shows their wide prevalence among human beings always . a glance on statistics reveals that mental disorders and abnormalities are affecting the humans at an",
+      "submission": "University students, especially those in stressful majors like nursing and midwifery, face significant mental health challenges. This study investigated the efficacy of neurolinguistic programming (NL",
+      "true_score": 3,
+      "predicted_score": 3,
+      "rationale": "Score: 3\nRationale: This abstract is mostly good but misses a minor detail. It correctly identifies the main problem, objective, method, results, and conclusion of the paper. However, it slightly understates the specificity of the intervention. The paper specifically used NLP techniques like 'anchoring' and 'reframing' to help students manage stress and anxiety. The abstract correctly identifies the general NLP approach but could be more specific.\n\nAbstract to Evaluate:\nUniversity students, especially those in stressful majors like nursing and midwifery, face significant mental health challenges. This study investigated the efficacy of neurolinguistic programming (NLP) in improving the mental"
+    },
+    {
+      "reference": "areview on the history of mental disorders shows their wide prevalence among human beings always . a glance on statistics reveals that mental disorders and abnormalities are affecting the humans at an",
+      "submission": "Mental health disorders are increasingly prevalent among university students, particularly those in high-stress fields like nursing and midwifery. This study explored whether neurolinguistic programmi",
+      "true_score": 2,
+      "predicted_score": 3,
+      "rationale": "Score: 3\nRationale: This abstract is mostly good but misses a minor detail. It correctly identifies the main problem, objective, method, and general conclusion. However, it slightly understates the specific results by omitting the exact percentage improvement. For example, instead of 'an overall improvement in their well-being', it should be 'an average 25% improvement in mental health scores'. This small detail is important for understanding the magnitude of the study's findings."
+    },
+    {
+      "reference": "areview on the history of mental disorders shows their wide prevalence among human beings always . a glance on statistics reveals that mental disorders and abnormalities are affecting the humans at an",
+      "submission": "Mental health is a critical aspect of well-being, especially for young adults and university students who often face significant stress. The field of neurolinguistic programming (NLP) has emerged as a",
+      "true_score": 1,
+      "predicted_score": 1,
+      "rationale": "Score: 1\nRationale: This abstract is very vague and generic, only loosely connected to the specific paper. It correctly identifies mental health as an important topic, but the specific study's methodology, results, and conclusion are not mentioned. The paper's specific focus on NLP and its application to nursing students is entirely absent. The abstract is also very broad, discussing 'university students' and 'mental health' in general, rather than the specific group and intervention. It is more like a general introduction to the topic rather than a summary of a specific research paper."
+    },
+    {
+      "reference": "areview on the history of mental disorders shows their wide prevalence among human beings always . a glance on statistics reveals that mental disorders and abnormalities are affecting the humans at an",
+      "submission": "The mental health of university students, particularly those in high-stress programs like nursing, is a growing concern. This study aimed to evaluate the effectiveness of neurolinguistic programming (",
+      "true_score": 0,
+      "predicted_score": 1,
+      "rationale": "Score: 1\nRationale: This abstract is very weak and misses most important parts of the paper. It correctly identifies the general topic of mental health in university students, but it misunderstands the specific objective, method, and results of the study. It also introduces a false conclusion that NLP is not effective for student mental health, which is not supported by the paper. The abstract is vague, generic, and misleading."
+    },
+    {
+      "reference": "primary diffuse leptomeningeal gliomatosis ( pdlg ) is a rare neoplasm with a short survival time of a few months . we report on a 53-year - old male patient who presented with epileptic seizures , ga",
+      "submission": "Primary diffuse leptomeningeal gliomatosis (PDLG) is a rare neoplasm characterized by a short survival time and lack of standardized therapeutic approaches. We present a case of a 53-year-old male who",
+      "true_score": 4,
+      "predicted_score": 3,
+      "rationale": "Score: 3\nRationale: This abstract is mostly good but misses a minor detail. It correctly identifies the patient's symptoms, diagnosis, treatment, and survival time. However, it omits a minor detail about the patient's initial MRI, which showed a small intramedullary lesion in the thoracic spine. This detail is not significant for the overall conclusion, but it is mentioned in the paper.\n\n[/INST] Score: 3\nRationale: This abstract is mostly good but misses a minor detail. It correctly identifies the patient's symptoms, diagnosis, treatment, and survival time. However, it omits a minor detail about the patient's initial"
+    },
+    {
+      "reference": "primary diffuse leptomeningeal gliomatosis ( pdlg ) is a rare neoplasm with a short survival time of a few months . we report on a 53-year - old male patient who presented with epileptic seizures , ga",
+      "submission": "Primary diffuse leptomeningeal gliomatosis (PDLG) is a very rare and serious condition, with no standard way to treat it. We tell about a 53-year-old man who had seizures and problems with walking. Do",
+      "true_score": 3,
+      "predicted_score": 3,
+      "rationale": "Score: 3\nRationale: This abstract is mostly good but misses a minor detail. It correctly identifies the patient's condition, treatment, and general outcome. However, it slightly understates the specific chemotherapy regimen, stating \"temozolomide, which showed some initial improvement\" instead of the exact 11 cycles. This is a minor omission that does not significantly affect the overall understanding of the paper."
+    },
+    {
+      "reference": "primary diffuse leptomeningeal gliomatosis ( pdlg ) is a rare neoplasm with a short survival time of a few months . we report on a 53-year - old male patient who presented with epileptic seizures , ga",
+      "submission": "Primary diffuse leptomeningeal gliomatosis (PDLG) is an uncommon and aggressive form of glioma. This report focuses on a 53-year-old male patient who presented with significant neurological symptoms, ",
+      "true_score": 2,
+      "predicted_score": 2,
+      "rationale": "Score: 2\nRationale: This abstract is partially correct but misses some important parts. It correctly identifies the patient's condition as PDLG and mentions the general treatment approach. However, it omits the specific details about the patient's treatment regimen, including the number of cycles of chemotherapy and the type of second-line chemotherapy. It also fails to mention the patient's survival time, which is a crucial aspect of the case report. The abstract is vague and lacks specificity, making it less informative than the original paper."
+    },
+    {
+      "reference": "primary diffuse leptomeningeal gliomatosis ( pdlg ) is a rare neoplasm with a short survival time of a few months . we report on a 53-year - old male patient who presented with epileptic seizures , ga",
+      "submission": "Primary diffuse leptomeningeal gliomatosis (PDLG) is a very serious and rare brain condition. Patients often face a difficult prognosis with limited treatment options. This article presents a clinical",
+      "true_score": 1,
+      "predicted_score": 1,
+      "rationale": "Score: 1\nRationale: This abstract is very vague and generic, only loosely connected to the specific paper. It correctly identifies PDLG as a serious condition, but the method, results, and conclusion are all very broad and generic, not specific to the patient or the treatment. It also lacks specific details like the patient's age, the exact type of glioma, the specific chemotherapy regimen, and the exact survival time. The abstract could apply to many generic cases of PDLG, not just this specific patient."
+    },
+    {
+      "reference": "primary diffuse leptomeningeal gliomatosis ( pdlg ) is a rare neoplasm with a short survival time of a few months . we report on a 53-year - old male patient who presented with epileptic seizures , ga",
+      "submission": "Primary diffuse leptomeningeal gliomatosis (PDLG) is no longer a concern thanks to a revolutionary new herbal remedy. This study definitively proves that a daily regimen of dandelion root tea can comp",
+      "true_score": 0,
+      "predicted_score": 0,
+      "rationale": "Score: 0\nRationale: This abstract is completely fabricated and does not accurately reflect the paper. It claims that a herbal remedy can cure PDLG, which is not supported by the study. It also provides false results, including a 50-year survival time, and a full recovery, which are not reported in the paper. The abstract also includes a false conclusion that all previous scientific understanding of PDLG is flawed and calls for an overhaul of neurological oncology protocols. This is a clear violation of the rubric."
+    },
+    {
+      "reference": "there is increasing evidence of a clear genetic link between the phenotypic characteristics of dogs and adverse drug reactions . the fields of pharmacogenetics and pharmacogenomics have become increas",
+      "submission": "The fields of pharmacogenetics and pharmacogenomics show increasing promise for the clinical application of genetic data to prevent adverse drug reactions. Specific screening tests can predict which a",
+      "true_score": 4,
+      "predicted_score": 1,
+      "rationale": "Score: 1\nRationale: This abstract is very vague and generic, only loosely connected to the specific paper. It correctly identifies the general topic of pharmacogenetics and the importance of genetic testing for drug reactions. However, it misses most of the specific details. It incorrectly identifies the mdr-1 gene as the most studied gene, and it incorrectly states that the study examined the mdr-1, cyp1a2, and cyp2b11 genes in four breeds. It also incorrectly states that the results revealed 'several SNPs of the cyp1a2 and cyp2b11 genes are potential targets for future drug sensitivity investigations"
+    },
+    {
+      "reference": "there is increasing evidence of a clear genetic link between the phenotypic characteristics of dogs and adverse drug reactions . the fields of pharmacogenetics and pharmacogenomics have become increas",
+      "submission": "Pharmacogenetics is a promising field for preventing adverse drug reactions in animals through the clinical application of genetic data. Understanding specific genetic variations can help predict an a",
+      "true_score": 3,
+      "predicted_score": 1,
+      "rationale": "Score: 1\nRationale: This abstract is very vague and generic, only loosely connected to the specific paper. It correctly identifies the general topic of pharmacogenetics and the importance of genetic polymorphisms in canine breeds. However, it misses most of the specific details. It incorrectly identifies the breeds as 'Uruguayan Cimarron, Border Collie, and German Shepherd' instead of 'Cimarr\u00f3n Uruguayo, Border Collie, and German Shepherd Dog' and incorrectly identifies the gene as 'cyp1a2 and cyp2b11' instead of 'cyp1a2,"
+    },
+    {
+      "reference": "there is increasing evidence of a clear genetic link between the phenotypic characteristics of dogs and adverse drug reactions . the fields of pharmacogenetics and pharmacogenomics have become increas",
+      "submission": "The application of pharmacogenetics holds significant potential for preventing adverse drug reactions in veterinary medicine by leveraging genetic information. Understanding how genetic factors influe",
+      "true_score": 2,
+      "predicted_score": 1,
+      "rationale": "Score: 1\nRationale: This abstract is very vague and generic, only loosely connected to the specific paper. It correctly identifies the general topic of pharmacogenetics and genetic markers, but misses most of the specific details. It does not mention ivermectin, neurotoxicosis, MDR1, or CYP2B6, which are all central to the paper. It also does not mention Uruguayan Cimarron dogs or the specific genetic study conducted. The abstract is more like a general introduction to the field of pharmacogenetics in veterinary medicine."
+    },
+    {
+      "reference": "there is increasing evidence of a clear genetic link between the phenotypic characteristics of dogs and adverse drug reactions . the fields of pharmacogenetics and pharmacogenomics have become increas",
+      "submission": "Pharmacogenetics is an emerging field focused on understanding how an individual's genetic makeup affects their response to drugs. This research area is particularly vital in veterinary medicine to pr",
+      "true_score": 1,
+      "predicted_score": 1,
+      "rationale": "Score: 1\nRationale: This abstract is very vague and generic, only loosely connected to the specific paper. It correctly identifies pharmacogenetics as a field, its relevance to veterinary medicine, and the general goal of improving drug safety. However, it misses most of the specific details. The paper is about a specific gene (MDR1) and its mutation in dogs, which is not mentioned in the abstract. It also fails to mention the specific breeds (collies) and their susceptibility to ivermectin, the specific drug (ivermectin) and its mechanism of action, the specific genetic test (PCR) used, or the specific conclusion about the genetic"
+    },
+    {
+      "reference": "there is increasing evidence of a clear genetic link between the phenotypic characteristics of dogs and adverse drug reactions . the fields of pharmacogenetics and pharmacogenomics have become increas",
+      "submission": "This pioneering study successfully discovered novel, highly penetrant mdr-1 gene mutations in Uruguayan Cimarron and German Shepherd dogs, which are directly responsible for all cases of ivermectin-in",
+      "true_score": 0,
+      "predicted_score": 0,
+      "rationale": "Score: 0\nRationale: This abstract is completely fabricated and does not accurately reflect the paper. It claims to have discovered specific mutations in Uruguayan Cimarron and German Shepherd dogs, which is not supported by the paper. It also claims to have developed a genetic test and proven its effectiveness, which is also not supported by the paper. The abstract also exaggerates the impact of the research, claiming it eradicates the risk of ivermectin toxicity and establishes mandatory screening, which is not true based on the paper. The abstract is also unfaithful in its language, introducing 'pioneering study', 'novel, highly penetrant mdr-"
+    },
+    {
+      "reference": "despite advancements in modern medical science and the health management industry , the \n incidence of cerebral palsy ( cp ) continues to rise1 . the most common features of cp are decreased muscle st",
+      "submission": "The purpose of this study was to investigate the differences in symmetry of sitting posture between typical developmental (TD) children and hemi-cerebral palsy (CP) children. A school chair mounted on",
+      "true_score": 4,
+      "predicted_score": 1,
+      "rationale": "Score: 1\nRationale: This abstract is very vague and misses most important parts of the paper. It correctly identifies the general topic of the study (sitting posture in children with CP), but it is very imprecise about the specific methodology, results, and conclusion. It also introduces a new variable (symmetry index) that is not mentioned in the paper. The abstract is very generic and could apply to many different studies. It is not a good representation of this specific paper."
+    },
+    {
+      "reference": "despite advancements in modern medical science and the health management industry , the \n incidence of cerebral palsy ( cp ) continues to rise1 . the most common features of cp are decreased muscle st",
+      "submission": "This study aimed to investigate the symmetry of quiet-sitting posture in typical developmental (TD) and hemi-cerebral palsy (CP) children. A force platform system was utilized to measure pressure dist",
+      "true_score": 3,
+      "predicted_score": 1,
+      "rationale": "Score: 1\nRationale: This abstract is very vague and misses most important parts of the paper. It correctly identifies the general topic of the study (sitting posture in children with CP) and the method (using a force platform). However, it completely omits the specific objective (investigating differences in COP pressure distribution), the specific population (hemiparetic CP children), the specific measurement (pressure distribution under the ischial tuberosities), the specific results (CP children had more COP displacement), and the specific conclusion (CP children have more asymmetrical sitting postures). It also introduces an incorrect claim about 'symmetry' instead of 'asymmetry' and incorrectly"
+    },
+    {
+      "reference": "despite advancements in modern medical science and the health management industry , the \n incidence of cerebral palsy ( cp ) continues to rise1 . the most common features of cp are decreased muscle st",
+      "submission": "Cerebral palsy (CP) often leads to postural impairments. This study examined the differences in sitting posture between children with typical development (TD) and those with CP. Pressure distribution ",
+      "true_score": 2,
+      "predicted_score": 2,
+      "rationale": "Score: 2\nRationale: This abstract is partially correct but misses significant parts. It correctly identifies the general topic, problem, and objective. However, it omits the specific methodology (e.g., 'twelve children with CP' and 'two school chairs mounted on a force platform') and the specific results (e.g., 'the study found that the CP group had a significantly higher COP in the posterior direction'). The conclusion is also vague and generic, lacking specific findings."
+    },
+    {
+      "reference": "despite advancements in modern medical science and the health management industry , the \n incidence of cerebral palsy ( cp ) continues to rise1 . the most common features of cp are decreased muscle st",
+      "submission": "Cerebral palsy (CP) is a condition that impacts motor control and posture, making independent sitting a significant developmental challenge for affected children. Understanding postural control is cru",
+      "true_score": 1,
+      "predicted_score": 1,
+      "rationale": "Score: 1\nRationale: This abstract is very vague and generic. It correctly identifies cerebral palsy as a condition affecting motor control and posture, and that understanding posture is important for rehabilitation. However, it misses most of the specific details. It does not mention the specific type of posture (sitting), the specific population (children with hemiplegic cerebral palsy), the specific methodology (pressure distribution measurement), the specific results (differences in pressure distribution), or the specific conclusion (improved understanding of postural control). It also lacks specificity in the generalization of the findings."
+    },
+    {
+      "reference": "despite advancements in modern medical science and the health management industry , the \n incidence of cerebral palsy ( cp ) continues to rise1 . the most common features of cp are decreased muscle st",
+      "submission": "This groundbreaking study utilized electromyography (EMG) to analyze muscle activity patterns during bipedal standing in 20 young adults with cerebral palsy and a control group. Surprisingly, the rese",
+      "true_score": 0,
+      "predicted_score": 0,
+      "rationale": "Score: 0\nRationale: This abstract is completely unfaithful to the paper. It fabricates the methodology (EMG, bipedal standing, 20 adults), the specific findings (no significant differences in muscle activation symmetry), and the conclusion (previous assumptions about postural asymmetry are incorrect). The paper actually used a force platform to measure pressure distribution in children, not adults, and found significant differences in pressure distribution. The paper also did not claim that previous diagnostic criteria are incorrect."
+    },
+    {
+      "reference": "lepidoptera include agricultural pests that , through feeding and other activities , negatively affect stored grains , food and fiber crops [ 2 , 3 ] . since a single lepidoptera adult can produce hun",
+      "submission": "Lepidopteran insects are significant agricultural pests, causing economic damage and crop loss. Current broad-spectrum pesticides often harm beneficial arthropods and ecosystems, necessitating the dev",
+      "true_score": 4,
+      "predicted_score": 3,
+      "rationale": "Score: 3\nRationale: This abstract is mostly good but misses some minor details. It correctly identifies the main problem (pesticide effects on beneficial arthropods), objective (developing targeted pest control), and general methodology (comparative immunology). It also correctly emphasizes the importance of AMPs and their divergence in Lepidoptera. However, it slightly oversimplifies the specific findings by omitting the exact AMPs and pathways studied and the specific differences in recognition proteins. It also omits the specific example of *Xenorhabdus nematophila* and its effects on *Manduca sexta* and *Sp"
+    },
+    {
+      "reference": "lepidoptera include agricultural pests that , through feeding and other activities , negatively affect stored grains , food and fiber crops [ 2 , 3 ] . since a single lepidoptera adult can produce hun",
+      "submission": "Lepidopteran insects are major agricultural pests, and current pesticides have harmful off-target effects on beneficial arthropods like pollinators. Developing specific pest control methods is essenti",
+      "true_score": 3,
+      "predicted_score": 2,
+      "rationale": "Score: 2\nRationale: This abstract is partially correct but misses significant parts. It correctly identifies the general problem, objective, and methodology. However, it significantly simplifies the results and conclusion. The abstract only mentions 'AMP expression' instead of 'AMP pathways' and 'AMP genes'. It also omits the specific findings about the *Drosophila* and *Manduca* species and the hypothesis that 'specific elements within these pathways may have diverged in lepidopterans'. The conclusion is also very vague and generic, lacking the specific goal of 'minimizing ecological harm' and 'effectively managing lepidopteran pests'."
+    },
+    {
+      "reference": "lepidoptera include agricultural pests that , through feeding and other activities , negatively affect stored grains , food and fiber crops [ 2 , 3 ] . since a single lepidoptera adult can produce hun",
+      "submission": "Agricultural pests, especially lepidopterans, cause significant crop damage and economic losses globally. Existing pest control methods, relying heavily on broad-spectrum insecticides, often harm non-",
+      "true_score": 2,
+      "predicted_score": 1,
+      "rationale": "Score: 1\nRationale: This abstract is very vague and generic. It correctly identifies the general problem of pesticide impact on beneficial insects and the need for new pest control methods. However, it misses most of the specific details. It does not mention Lepidoptera, immune system, Xenorhabdus nematophila, or any specific methodology like CRISPR. It also lacks a concrete conclusion about the potential for CRISPR-based gene drives. The abstract is more like a general call to action for research in this area rather than a specific summary of this particular paper."
+    },
+    {
+      "reference": "lepidoptera include agricultural pests that , through feeding and other activities , negatively affect stored grains , food and fiber crops [ 2 , 3 ] . since a single lepidoptera adult can produce hun",
+      "submission": "Insects pose a significant threat to agriculture worldwide, leading to substantial crop losses. Current pest management techniques have drawbacks, impacting the environment and other organisms. Unders",
+      "true_score": 1,
+      "predicted_score": 1,
+      "rationale": "Score: 1\nRationale: This abstract is very vague and generic, only loosely connected to the specific paper. It discusses the general problem of insect pests in agriculture and the importance of understanding their biology for pest management. While the paper does discuss the importance of insect immunity for pest control, it is much more specific, focusing on a particular pathogen and its effects on a specific insect species. The abstract misses most of the specific details, including the exact pathogen, the specific immune pathways, and the specific insect species. It also omits the specific methodology, results, and conclusion of the paper. Instead, it is a very general statement about the importance of insect immunity for"
+    },
+    {
+      "reference": "lepidoptera include agricultural pests that , through feeding and other activities , negatively affect stored grains , food and fiber crops [ 2 , 3 ] . since a single lepidoptera adult can produce hun",
+      "submission": "This paper demonstrates that aliens are responsible for crop circles and that these patterns are complex algorithms designed to communicate with lepidopteran insects. We found that feeding lepidoptera",
+      "true_score": 0,
+      "predicted_score": 0,
+      "rationale": "Score: 0\nRationale: This abstract is completely fabricated and unfaithful to the paper. It introduces entirely new concepts, such as aliens, quantum entanglement, and cosmic threats, which are not present in the original content. It also claims specific dietary supplements can solve global warming, which is not supported by the paper. The abstract is also very vague and lacks specific details about the study, such as the species of lepidopteran caterpillars, the specific immune response measured, or the methodology used to enhance their immune response. It is essentially a random collection of unsupported claims and ideas."
+    }
+  ]
+}
