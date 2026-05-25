@@ -102,9 +102,10 @@ training_args = TrainingArguments(
     metric_for_best_model       = "eval_loss",
     greater_is_better           = False,
     logging_steps               = 10,
-    warmup_ratio                = 0.1,
+    warmup_steps                = 50,
     lr_scheduler_type           = "cosine",
-    fp16                        = True,
+    fp16                        = False,
+    bf16                        = True,
     report_to                   = "none",
 )
 
