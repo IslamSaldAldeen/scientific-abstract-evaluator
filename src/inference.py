@@ -1,33 +1,72 @@
-import unsloth
+import argparse
 import json
-import torch
-import sys
 import os
 import re
+import yaml
+import torch
+import unsloth
+
 from unsloth import FastLanguageModel
 
+
 # ============================================================
-# Configuration
+# Load Config
 # ============================================================
-MODEL_DIR = "models/finetuned-mistral"
-TEST_FILE = "data/splits/test.json"
-OUTPUT_FILE = "results/finetuned_predictions.json"
-MAX_SEQ_LENGTH = 2048
+def load_config(config_path):
+    with open(config_path, "r", encoding="utf-8") as f:
+        return yaml.safe_load(f)
+
+
+parser = argparse.ArgumentParser()
+parser.add_argument(
+    "--config",
+    type=str,
+    default="configs/experiments/exp01_v2_lora.yaml",
+    help="Path to experiment config YAML file"
+)
+args = parser.parse_args()
+
+config = load_config(args.config)
+
+experiment_name = config["experiment"]["name"]
+
+MODEL_DIR = config["outputs"]["model_dir"]
+TEST_FILE = config["dataset"]["test_path"]
+OUTPUT_FILE = config["outputs"]["finetuned_predictions"]
+
+METRICS_FILE = config["outputs"]["finetuned_metrics"]
+
+MAX_SEQ_LENGTH = config["model"]["max_seq_length"]
+LOAD_IN_4BIT = config["model"]["load_in_4bit"]
+
+MAX_NEW_TOKENS = config["inference"]["max_new_tokens"]
+DO_SAMPLE = config["inference"]["do_sample"]
+
 
 # ============================================================
 # Load Fine-tuned Model
 # ============================================================
+print("=" * 60)
+print(f"Experiment: {experiment_name}")
+print(f"Config:     {args.config}")
+print(f"Model dir:  {MODEL_DIR}")
+print(f"Test file:  {TEST_FILE}")
+print(f"Output:     {OUTPUT_FILE}")
+print(f"Metrics:    {METRICS_FILE}")
+print("=" * 60)
+
 print("Loading fine-tuned model...")
 
 model, tokenizer = FastLanguageModel.from_pretrained(
     model_name=MODEL_DIR,
     max_seq_length=MAX_SEQ_LENGTH,
-    load_in_4bit=True,
+    load_in_4bit=LOAD_IN_4BIT,
 )
 
 FastLanguageModel.for_inference(model)
 
 print("Model loaded!")
+
 
 # ============================================================
 # Load Test Set
@@ -36,6 +75,7 @@ with open(TEST_FILE, "r", encoding="utf-8") as f:
     test_data = json.load(f)
 
 print(f"Test entries: {len(test_data)}")
+
 
 # ============================================================
 # Prompt Function
@@ -72,15 +112,11 @@ Important scoring guidance:
 
     return prompt
 
+
 # ============================================================
-# Inference Function
+# Inference Helpers
 # ============================================================
 def extract_score(response):
-    """
-    Extracts a valid score from the model response.
-    Accepts only scores from 0 to 4.
-    """
-
     match = re.search(r"Score:\s*([0-4])", response)
 
     if match:
@@ -102,8 +138,8 @@ def get_prediction(entry):
     with torch.no_grad():
         outputs = model.generate(
             **inputs,
-            max_new_tokens=150,
-            do_sample=False,
+            max_new_tokens=MAX_NEW_TOKENS,
+            do_sample=DO_SAMPLE,
             pad_token_id=tokenizer.eos_token_id
         )
 
@@ -115,6 +151,7 @@ def get_prediction(entry):
     score = extract_score(response.strip())
 
     return score, response.strip()
+
 
 # ============================================================
 # Run on Test Set
@@ -141,11 +178,14 @@ for i, entry in enumerate(test_data):
 
     print(f"  True: {entry['score']} | Predicted: {score}")
 
+
 # ============================================================
 # Save Results
 # ============================================================
 finetuned_results = {
+    "experiment": experiment_name,
     "model": "Mistral-7B-Instruct-v0.2 (fine-tuned)",
+    "config": args.config,
     "predictions": results
 }
 
@@ -156,12 +196,12 @@ with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
 
 print(f"Saved to {OUTPUT_FILE}")
 
+
 # ============================================================
 # Run Evaluation
 # ============================================================
 print("\nRunning evaluation...")
 
-sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 from evaluate import evaluate
 
-metrics = evaluate(OUTPUT_FILE)
+metrics = evaluate(OUTPUT_FILE, METRICS_FILE)
