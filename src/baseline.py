@@ -5,7 +5,7 @@ import os
 from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
 
 # Load test set
-with open("data/test.json", "r") as f:
+with open("data/splits/test.json", "r") as f:
     test_data = json.load(f)
 
 print(f"Test entries: {len(test_data)}")

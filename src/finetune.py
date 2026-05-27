@@ -10,8 +10,8 @@ from trl import SFTTrainer
 # ============================================================
 MODEL_NAME      = "unsloth/mistral-7b-instruct-v0.2-bnb-4bit"
 MAX_SEQ_LENGTH  = 2048
-TRAIN_FILE      = "data/train.json"
-VAL_FILE        = "data/val.json"
+TRAIN_FILE      = "data/splits/train.json"
+VAL_FILE        = "data/splits/val.json"
 OUTPUT_DIR      = "models/finetuned-mistral"
 
 LORA_R          = 32

@@ -5,7 +5,7 @@ from collections import Counter
 # ============================================================
 # Load Dataset
 # ============================================================
-with open("data/dataset_final_v2.json", "r") as f:
+with open("data/raw/dataset_final_v2.json", "r") as f:
     data = json.load(f)
 
 print(f"Total entries: {len(data)}")
@@ -48,13 +48,13 @@ for split_name, split in [("Train", train), ("Val", val), ("Test", test)]:
 # ============================================================
 # Save Splits
 # ============================================================
-with open("data/train.json", "w") as f:
+with open("data/splits/train.json", "w") as f:
     json.dump(train, f, indent=2)
 
-with open("data/val.json", "w") as f:
+with open("data/splits/val.json", "w") as f:
     json.dump(val, f, indent=2)
 
-with open("data/test.json", "w") as f:
+with open("data/splits/test.json", "w") as f:
     json.dump(test, f, indent=2)
 
 print("\n✅ Saved train.json, val.json, test.json to data/")
