@@ -14,14 +14,14 @@ TRAIN_FILE      = "data/train.json"
 VAL_FILE        = "data/val.json"
 OUTPUT_DIR      = "models/finetuned-mistral"
 
-LORA_R          = 16
-LORA_ALPHA      = 32
+LORA_R          = 32
+LORA_ALPHA      = 64
 LORA_DROPOUT    = 0.05
 
-EPOCHS          = 10
-BATCH_SIZE      = 4
-LEARNING_RATE   = 2e-4
-PATIENCE        = 3
+EPOCHS          = 15
+BATCH_SIZE      = 8
+LEARNING_RATE   = 1e-4
+PATIENCE        = 5
 
 # ============================================================
 # Load Model
