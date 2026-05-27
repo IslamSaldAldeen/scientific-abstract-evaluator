@@ -1,4 +1,26 @@
-.venv/
+# Python
 __pycache__/
 *.pyc
 .ipynb_checkpoints/
+
+# Environments
+myenv/
+.venv/
+venv/
+
+# Model/checkpoint files
+models/*
+!models/.gitkeep
+*.safetensors
+*.bin
+*.pt
+*.pth
+*.ckpt
+
+# Unsloth/cache
+unsloth_compiled_cache/
+.cache/
+
+# Logs
+logs/
+*.log
