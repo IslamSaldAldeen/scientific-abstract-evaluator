@@ -1,5 +1,7 @@
 import json
+import os
 import numpy as np
+
 from sklearn.metrics import (
     accuracy_score,
     f1_score,
@@ -10,9 +12,9 @@ from sklearn.metrics import (
 )
 
 
-def evaluate(predictions_file):
+def evaluate(predictions_file, metrics_output_file=None):
     # Load predictions
-    with open(predictions_file, "r") as f:
+    with open(predictions_file, "r", encoding="utf-8") as f:
         data = json.load(f)
 
     ground_truth = [entry["true_score"] for entry in data["predictions"]]
@@ -25,9 +27,13 @@ def evaluate(predictions_file):
     rmse = np.sqrt(np.mean((np.array(ground_truth) - np.array(predictions)) ** 2))
     qwk = cohen_kappa_score(ground_truth, predictions, weights="quadratic")
     cks = cohen_kappa_score(ground_truth, predictions)
-    cm = confusion_matrix(ground_truth, predictions, labels=[0, 1, 2, 3, 4])
 
-    # Classification report
+    cm = confusion_matrix(
+        ground_truth,
+        predictions,
+        labels=[0, 1, 2, 3, 4]
+    )
+
     report_text = classification_report(
         ground_truth,
         predictions,
@@ -45,9 +51,25 @@ def evaluate(predictions_file):
         output_dict=True
     )
 
+    metrics = {
+        "model": data.get("model", "unknown"),
+        "experiment": data.get("experiment", "unknown"),
+        "predictions_file": predictions_file,
+        "num_predictions": len(predictions),
+        "accuracy": float(acc),
+        "macro_f1": float(f1),
+        "mae": float(mae),
+        "rmse": float(rmse),
+        "qwk": float(qwk),
+        "cohen_kappa_linear": float(cks),
+        "confusion_matrix": cm.tolist(),
+        "classification_report": report_dict
+    }
+
     # Print results
     print("=" * 45)
-    print(f"Model: {data['model']}")
+    print(f"Model:      {metrics['model']}")
+    print(f"Experiment: {metrics['experiment']}")
     print("=" * 45)
     print(f"Accuracy:              {acc:.4f}")
     print(f"Macro F1:              {f1:.4f}")
@@ -65,24 +87,22 @@ def evaluate(predictions_file):
     print("\nClassification Report:")
     print(report_text)
 
-    # Save metrics back into the predictions file
-    metrics = {
-        "accuracy": acc,
-        "macro_f1": f1,
-        "mae": mae,
-        "rmse": rmse,
-        "qwk": qwk,
-        "cohen_kappa_linear": cks,
-        "confusion_matrix": cm.tolist(),
-        "classification_report": report_dict
-    }
-
+    # Keep metrics inside predictions file too
     data["metrics"] = metrics
 
-    with open(predictions_file, "w") as f:
-        json.dump(data, f, indent=2)
+    with open(predictions_file, "w", encoding="utf-8") as f:
+        json.dump(data, f, indent=2, ensure_ascii=False)
 
-    print(f"\nMetrics saved to {predictions_file}")
+    print(f"\nMetrics also saved inside {predictions_file}")
+
+    # Save separate metrics file
+    if metrics_output_file is not None:
+        os.makedirs(os.path.dirname(metrics_output_file), exist_ok=True)
+
+        with open(metrics_output_file, "w", encoding="utf-8") as f:
+            json.dump(metrics, f, indent=2, ensure_ascii=False)
+
+        print(f"Separate metrics file saved to {metrics_output_file}")
 
     return metrics
 
@@ -91,7 +111,9 @@ if __name__ == "__main__":
     import sys
 
     if len(sys.argv) < 2:
-        print("Usage: python evaluate.py <predictions_file.json>")
-        print("Example: python evaluate.py results/baseline_predictions.json")
+        print("Usage: python src/evaluate.py <predictions_file.json> [metrics_output_file.json]")
+        print("Example: python src/evaluate.py results/experiments/exp01_v2_lora/baseline_predictions.json results/experiments/exp01_v2_lora/baseline_metrics.json")
     else:
-        evaluate(sys.argv[1])
+        predictions_file = sys.argv[1]
+        metrics_output_file = sys.argv[2] if len(sys.argv) >= 3 else None
+        evaluate(predictions_file, metrics_output_file)

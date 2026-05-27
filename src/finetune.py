@@ -1,56 +1,112 @@
+import argparse
 import json
+import os
+import shutil
+import yaml
 import torch
+
 from datasets import Dataset
 from transformers import TrainingArguments, EarlyStoppingCallback
 from unsloth import FastLanguageModel
 from trl import SFTTrainer
 
-# ============================================================
-# Configuration
-# ============================================================
-MODEL_NAME      = "unsloth/mistral-7b-instruct-v0.2-bnb-4bit"
-MAX_SEQ_LENGTH  = 2048
-TRAIN_FILE      = "data/splits/train.json"
-VAL_FILE        = "data/splits/val.json"
-OUTPUT_DIR      = "models/finetuned-mistral"
 
-LORA_R          = 32
-LORA_ALPHA      = 64
-LORA_DROPOUT    = 0.05
+# ============================================================
+# Load Config
+# ============================================================
+def load_config(config_path):
+    with open(config_path, "r", encoding="utf-8") as f:
+        return yaml.safe_load(f)
 
-EPOCHS          = 15
-BATCH_SIZE      = 8
-LEARNING_RATE   = 1e-4
-PATIENCE        = 5
+
+parser = argparse.ArgumentParser()
+parser.add_argument(
+    "--config",
+    type=str,
+    default="configs/experiments/exp01_v2_lora.yaml",
+    help="Path to experiment config YAML file"
+)
+args = parser.parse_args()
+
+config = load_config(args.config)
+
+experiment_name = config["experiment"]["name"]
+
+MODEL_NAME = config["model"]["base_model"]
+MAX_SEQ_LENGTH = config["model"]["max_seq_length"]
+LOAD_IN_4BIT = config["model"]["load_in_4bit"]
+
+TRAIN_FILE = config["dataset"]["train_path"]
+VAL_FILE = config["dataset"]["val_path"]
+
+OUTPUT_DIR = config["outputs"]["model_dir"]
+EXPERIMENT_DIR = config["outputs"]["experiment_dir"]
+CONFIG_USED_PATH = config["outputs"]["config_used"]
+
+LORA_R = config["lora"]["r"]
+LORA_ALPHA = config["lora"]["alpha"]
+LORA_DROPOUT = config["lora"]["dropout"]
+TARGET_MODULES = config["lora"]["target_modules"]
+
+EPOCHS = config["training"]["epochs"]
+TRAIN_BATCH_SIZE = config["training"]["train_batch_size"]
+EVAL_BATCH_SIZE = config["training"]["eval_batch_size"]
+LEARNING_RATE = config["training"]["learning_rate"]
+WARMUP_STEPS = config["training"]["warmup_steps"]
+LR_SCHEDULER_TYPE = config["training"]["lr_scheduler_type"]
+PATIENCE = config["training"]["early_stopping_patience"]
+FP16 = config["training"]["fp16"]
+BF16 = config["training"]["bf16"]
+REPORT_TO = config["training"]["report_to"]
+
+
+# ============================================================
+# Prepare Experiment Folders
+# ============================================================
+os.makedirs(EXPERIMENT_DIR, exist_ok=True)
+os.makedirs(OUTPUT_DIR, exist_ok=True)
+
+shutil.copyfile(args.config, CONFIG_USED_PATH)
+
+print("=" * 60)
+print(f"Experiment: {experiment_name}")
+print(f"Config:     {args.config}")
+print(f"Train file: {TRAIN_FILE}")
+print(f"Val file:   {VAL_FILE}")
+print(f"Model out:  {OUTPUT_DIR}")
+print("=" * 60)
+
 
 # ============================================================
 # Load Model
 # ============================================================
 print("Loading model...")
+
 model, tokenizer = FastLanguageModel.from_pretrained(
-    model_name      = MODEL_NAME,
-    max_seq_length  = MAX_SEQ_LENGTH,
-    load_in_4bit    = True,
+    model_name=MODEL_NAME,
+    max_seq_length=MAX_SEQ_LENGTH,
+    load_in_4bit=LOAD_IN_4BIT,
 )
 
 model = FastLanguageModel.get_peft_model(
     model,
-    r                   = LORA_R,
-    lora_alpha          = LORA_ALPHA,
-    lora_dropout        = LORA_DROPOUT,
-    target_modules      = ["q_proj", "k_proj", "v_proj", "o_proj",
-                           "gate_proj", "up_proj", "down_proj"],
-    bias                = "none",
-    use_gradient_checkpointing = True,
+    r=LORA_R,
+    lora_alpha=LORA_ALPHA,
+    lora_dropout=LORA_DROPOUT,
+    target_modules=TARGET_MODULES,
+    bias="none",
+    use_gradient_checkpointing=True,
 )
+
 print("Model loaded!")
+
 
 # ============================================================
 # Format Data
 # ============================================================
 def format_entry(entry):
     rubric_text = "\n".join([f"- {k}: {v}" for k, v in entry["rubric"].items()])
-    
+
     prompt = f"""[INST] You are a scientific abstract quality evaluator.
 
 Task: {entry["task"]}
@@ -70,58 +126,62 @@ Rationale: <one sentence explanation>
 [/INST]
 Score: {entry["score"]}
 Rationale: {entry["rationale"]}"""
-    
+
     return {"text": prompt}
+
 
 print("Loading and formatting data...")
 
-with open(TRAIN_FILE, "r") as f:
+with open(TRAIN_FILE, "r", encoding="utf-8") as f:
     train_raw = json.load(f)
 
-with open(VAL_FILE, "r") as f:
+with open(VAL_FILE, "r", encoding="utf-8") as f:
     val_raw = json.load(f)
 
 train_dataset = Dataset.from_list([format_entry(e) for e in train_raw])
-val_dataset   = Dataset.from_list([format_entry(e) for e in val_raw])
+val_dataset = Dataset.from_list([format_entry(e) for e in val_raw])
 
 print(f"Train: {len(train_dataset)} entries")
 print(f"Val:   {len(val_dataset)} entries")
+
 
 # ============================================================
 # Training Arguments
 # ============================================================
 training_args = TrainingArguments(
-    output_dir                  = OUTPUT_DIR,
-    num_train_epochs            = EPOCHS,
-    per_device_train_batch_size = BATCH_SIZE,
-    per_device_eval_batch_size  = BATCH_SIZE,
-    learning_rate               = LEARNING_RATE,
-    eval_strategy               = "epoch",
-    save_strategy               = "epoch",
-    load_best_model_at_end      = True,
-    metric_for_best_model       = "eval_loss",
-    greater_is_better           = False,
-    logging_steps               = 10,
-    warmup_steps                = 50,
-    lr_scheduler_type           = "cosine",
-    fp16                        = False,
-    bf16                        = True,
-    report_to                   = "none",
+    output_dir=OUTPUT_DIR,
+    num_train_epochs=EPOCHS,
+    per_device_train_batch_size=TRAIN_BATCH_SIZE,
+    per_device_eval_batch_size=EVAL_BATCH_SIZE,
+    learning_rate=LEARNING_RATE,
+    eval_strategy="epoch",
+    save_strategy="epoch",
+    load_best_model_at_end=True,
+    metric_for_best_model="eval_loss",
+    greater_is_better=False,
+    logging_steps=10,
+    warmup_steps=WARMUP_STEPS,
+    lr_scheduler_type=LR_SCHEDULER_TYPE,
+    fp16=FP16,
+    bf16=BF16,
+    report_to=REPORT_TO,
 )
+
 
 # ============================================================
 # Trainer
 # ============================================================
 trainer = SFTTrainer(
-    model           = model,
-    tokenizer       = tokenizer,
-    train_dataset   = train_dataset,
-    eval_dataset    = val_dataset,
-    dataset_text_field = "text",
-    max_seq_length  = MAX_SEQ_LENGTH,
-    args            = training_args,
-    callbacks       = [EarlyStoppingCallback(early_stopping_patience=PATIENCE)],
+    model=model,
+    tokenizer=tokenizer,
+    train_dataset=train_dataset,
+    eval_dataset=val_dataset,
+    dataset_text_field="text",
+    max_seq_length=MAX_SEQ_LENGTH,
+    args=training_args,
+    callbacks=[EarlyStoppingCallback(early_stopping_patience=PATIENCE)],
 )
+
 
 # ============================================================
 # Train
@@ -129,10 +189,14 @@ trainer = SFTTrainer(
 print("Starting training...")
 trainer.train()
 
+
 # ============================================================
 # Save Model
 # ============================================================
 print("Saving model...")
+
 model.save_pretrained(OUTPUT_DIR)
 tokenizer.save_pretrained(OUTPUT_DIR)
+
 print(f"Model saved to {OUTPUT_DIR}")
+print(f"Config copy saved to {CONFIG_USED_PATH}")

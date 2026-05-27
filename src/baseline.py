@@ -1,39 +1,99 @@
+import argparse
 import json
-import torch
-import sys
 import os
-from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
+import re
+import yaml
+import torch
 
-# Load test set
-with open("data/splits/test.json", "r") as f:
+from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
+from evaluate import evaluate
+
+
+# ============================================================
+# Load Config
+# ============================================================
+def load_config(config_path):
+    with open(config_path, "r", encoding="utf-8") as f:
+        return yaml.safe_load(f)
+
+
+parser = argparse.ArgumentParser()
+parser.add_argument(
+    "--config",
+    type=str,
+    default="configs/experiments/exp01_v2_lora.yaml",
+    help="Path to experiment config YAML file"
+)
+args = parser.parse_args()
+
+config = load_config(args.config)
+
+experiment_name = config["experiment"]["name"]
+
+BASELINE_MODEL = config["model"]["baseline_model"]
+TEST_FILE = config["dataset"]["test_path"]
+OUTPUT_FILE = config["outputs"]["baseline_predictions"]
+
+METRICS_FILE = config["outputs"]["baseline_metrics"]
+
+MAX_SEQ_LENGTH = config["model"]["max_seq_length"]
+LOAD_IN_4BIT = config["model"]["load_in_4bit"]
+
+MAX_NEW_TOKENS = config["inference"]["max_new_tokens"]
+DO_SAMPLE = config["inference"]["do_sample"]
+
+
+# ============================================================
+# Print Experiment Info
+# ============================================================
+print("=" * 60)
+print(f"Experiment:     {experiment_name}")
+print(f"Config:         {args.config}")
+print(f"Baseline model: {BASELINE_MODEL}")
+print(f"Test file:      {TEST_FILE}")
+print(f"Output:         {OUTPUT_FILE}")
+print(f"Metrics:  {METRICS_FILE}")
+print("=" * 60)
+
+
+# ============================================================
+# Load Test Set
+# ============================================================
+with open(TEST_FILE, "r", encoding="utf-8") as f:
     test_data = json.load(f)
 
 print(f"Test entries: {len(test_data)}")
 
-# Load Mistral model
-model_name = "mistralai/Mistral-7B-Instruct-v0.2"
 
+# ============================================================
+# Load Base Model
+# ============================================================
 bnb_config = BitsAndBytesConfig(
-    load_in_4bit=True,
+    load_in_4bit=LOAD_IN_4BIT,
     bnb_4bit_use_double_quant=True,
     bnb_4bit_quant_type="nf4",
     bnb_4bit_compute_dtype=torch.float16
 )
 
 print("Loading tokenizer...")
-tokenizer = AutoTokenizer.from_pretrained(model_name)
+tokenizer = AutoTokenizer.from_pretrained(BASELINE_MODEL)
 
-print("Loading model...")
+print("Loading base model...")
 model = AutoModelForCausalLM.from_pretrained(
-    model_name,
-    quantization_config=bnb_config,
+    BASELINE_MODEL,
+    quantization_config=bnb_config if LOAD_IN_4BIT else None,
     device_map="auto"
 )
+
 print("Model loaded!")
 
-# Prompt function
+
+# ============================================================
+# Prompt Function
+# ============================================================
 def build_inference_prompt(entry):
     rubric_text = "\n".join([f"- {k}: {v}" for k, v in entry["rubric"].items()])
+
     prompt = f"""[INST] You are a scientific abstract quality evaluator.
 
 Task: {entry["task"]}
@@ -60,71 +120,97 @@ Important scoring guidance:
 - Give Score 0 when it is unrelated, contradictory, fabricated, or contains serious unsupported claims.
 
 [/INST]"""
+
     return prompt
 
-# Inference function
+
+# ============================================================
+# Inference Helpers
+# ============================================================
+def extract_score(response):
+    match = re.search(r"Score:\s*([0-4])", response)
+
+    if match:
+        return int(match.group(1))
+
+    return None
+
+
 def get_prediction(entry):
     prompt = build_inference_prompt(entry)
-    inputs = tokenizer(prompt, return_tensors="pt").to("cuda")
-    
+
+    inputs = tokenizer(
+        prompt,
+        return_tensors="pt",
+        truncation=True,
+        max_length=MAX_SEQ_LENGTH
+    ).to("cuda")
+
     with torch.no_grad():
         outputs = model.generate(
             **inputs,
-            max_new_tokens=150,
-            temperature=0.1,
-            do_sample=True,
+            max_new_tokens=MAX_NEW_TOKENS,
+            do_sample=DO_SAMPLE,
             pad_token_id=tokenizer.eos_token_id
         )
-    
-    response = tokenizer.decode(outputs[0][inputs["input_ids"].shape[1]:], skip_special_tokens=True)
-    
-    score = None
-    for line in response.strip().split("\n"):
-        if line.startswith("Score:"):
-            try:
-                score = int(line.split(":")[1].strip()[0])
-                if score < 0 or score > 4:
-                    score = None
-            except:
-                score = None
-    
+
+    response = tokenizer.decode(
+        outputs[0][inputs["input_ids"].shape[1]:],
+        skip_special_tokens=True
+    )
+
+    score = extract_score(response.strip())
+
     return score, response.strip()
 
-# Run on test set
+
+# ============================================================
+# Run on Test Set
+# ============================================================
 results = []
 
 for i, entry in enumerate(test_data):
-    print(f"Processing {i+1}/{len(test_data)}...")
-    
-    score, rationale = get_prediction(entry)
-    
+    print(f"Processing {i + 1}/{len(test_data)}...")
+
+    score, model_rationale = get_prediction(entry)
+
     if score is None:
-        print(f"  Warning: Could not parse score, defaulting to 2")
+        print("  Warning: Could not parse score, defaulting to 2")
         score = 2
-    
+
     results.append({
-        "reference": entry["reference"][:200],
-        "submission": entry["submission"][:200],
+        "reference": entry["reference"],
+        "submission": entry["submission"],
         "true_score": entry["score"],
         "predicted_score": score,
-        "rationale": rationale
+        "gold_rationale": entry.get("rationale", "No gold rationale found in test entry"),
+        "model_rationale": model_rationale
     })
-    
+
     print(f"  True: {entry['score']} | Predicted: {score}")
 
-# Save results
+
+# ============================================================
+# Save Results
+# ============================================================
 baseline_results = {
+    "experiment": experiment_name,
     "model": "Mistral-7B-Instruct-v0.2 (base)",
+    "config": args.config,
     "predictions": results
 }
 
-with open("results/baseline_predictions.json", "w") as f:
-    json.dump(baseline_results, f, indent=2)
+os.makedirs(os.path.dirname(OUTPUT_FILE), exist_ok=True)
 
-print("Saved to results/baseline_predictions.json")
+with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
+    json.dump(baseline_results, f, indent=2, ensure_ascii=False)
 
-# Run evaluation
+print(f"Saved to {OUTPUT_FILE}")
+
+
+# ============================================================
+# Run Evaluation
+# ============================================================
 print("\nRunning evaluation...")
-sys.path.append(os.path.dirname(os.path.abspath(__file__)))
-from evaluate import evaluate
-metrics = evaluate("results/baseline_predictions.json")
+
+metrics = evaluate(OUTPUT_FILE, METRICS_FILE)
