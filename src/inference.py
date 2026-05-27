@@ -10,7 +10,7 @@ from unsloth import FastLanguageModel
 # Configuration
 # ============================================================
 MODEL_DIR = "models/finetuned-mistral"
-TEST_FILE = "data/test.json"
+TEST_FILE = "data/splits/test.json"
 OUTPUT_FILE = "results/finetuned_predictions.json"
 MAX_SEQ_LENGTH = 2048
 
