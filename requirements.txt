@@ -7,4 +7,5 @@ numpy
 unsloth
 datasets
 peft
-trlPyYAML
+trl
+PyYAML
