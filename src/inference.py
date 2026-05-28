@@ -40,7 +40,8 @@ MAX_SEQ_LENGTH = config["model"]["max_seq_length"]
 LOAD_IN_4BIT = config["model"]["load_in_4bit"]
 
 MAX_NEW_TOKENS = config["inference"]["max_new_tokens"]
-DO_SAMPLE = config["inference"]["do_sample"]
+DO_SAMPLE = config["inference"].get("finetuned_do_sample", True)
+TEMPERATURE = config["inference"].get("finetuned_temperature", 0.1)
 
 
 # ============================================================
@@ -96,11 +97,9 @@ Abstract to Evaluate:
 Rubric:
 {rubric_text}
 
-
 Evaluate the abstract and respond with ONLY this format:
 Score: <number from 0 to 4>
-Rationale: <one sentence explanation>ve Score 0 when it is unrelated, contradictory, fabricated, or contains serious unsupported claims.
-
+Rationale: <one sentence explanation>
 [/INST]"""
 
     return prompt
@@ -130,6 +129,7 @@ def get_prediction(entry):
         outputs = model.generate(
             **inputs,
             max_new_tokens=MAX_NEW_TOKENS,
+            temperature=TEMPERATURE if DO_SAMPLE else None,
             do_sample=DO_SAMPLE,
             pad_token_id=tokenizer.eos_token_id
         )
