@@ -96,17 +96,10 @@ Abstract to Evaluate:
 Rubric:
 {rubric_text}
 
-Evaluate the abstract and respond with ONLY this format:
-Rationale: <one sentence explanation>
-Score: <number from 0 to 4>
 
-Important scoring guidance:
-- Give Score 4 if the abstract covers the main problem, objective, methodology, key results, and conclusion, and is faithful, clear, concise, and free of references.
-- Do NOT reduce a Score 4 to Score 3 only because of a very minor missing detail that does not change the main meaning.
-- Give Score 3 when the abstract is mostly correct but misses one important element or has a minor faithfulness issue.
-- Give Score 2 when it covers only some important elements and misses major parts such as results or conclusion.
-- Give Score 1 when it is mostly vague, generic, or weakly connected to the paper.
-- Give Score 0 when it is unrelated, contradictory, fabricated, or contains serious unsupported claims.
+Evaluate the abstract and respond with ONLY this format:
+Score: <number from 0 to 4>
+Rationale: <one sentence explanation>ve Score 0 when it is unrelated, contradictory, fabricated, or contains serious unsupported claims.
 
 [/INST]"""
 

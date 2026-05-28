@@ -133,8 +133,8 @@ Important scoring guidance:
 - Give Score 0 when it is unrelated, contradictory, fabricated, or contains serious unsupported claims.
 
 [/INST]
-Rationale: {entry["rationale"]}
-Score: {entry["score"]}"""
+Score: {entry["score"]}
+Rationale: {entry["rationale"]}"""
 
     return {"text": prompt}
 
