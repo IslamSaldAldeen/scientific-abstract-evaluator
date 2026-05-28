@@ -1,0 +1,94 @@
+{
+  "model": "Mistral-7B-Instruct-v0.2 (fine-tuned)",
+  "experiment": "exp02_best_uploaded",
+  "predictions_file": "results/experiments/exp02_best_uploaded/finetuned_predictions.json",
+  "num_predictions": 50,
+  "accuracy": 0.52,
+  "macro_f1": 0.46723684210526306,
+  "mae": 0.72,
+  "rmse": 1.1661903789690602,
+  "qwk": 0.5952380952380952,
+  "cohen_kappa_linear": 0.4,
+  "confusion_matrix": [
+    [
+      9,
+      1,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      9,
+      1,
+      0,
+      0
+    ],
+    [
+      0,
+      4,
+      5,
+      1,
+      0
+    ],
+    [
+      0,
+      4,
+      3,
+      3,
+      0
+    ],
+    [
+      0,
+      4,
+      0,
+      6,
+      0
+    ]
+  ],
+  "classification_report": {
+    "Score 0": {
+      "precision": 1.0,
+      "recall": 0.9,
+      "f1-score": 0.9473684210526315,
+      "support": 10.0
+    },
+    "Score 1": {
+      "precision": 0.4090909090909091,
+      "recall": 0.9,
+      "f1-score": 0.5625,
+      "support": 10.0
+    },
+    "Score 2": {
+      "precision": 0.5555555555555556,
+      "recall": 0.5,
+      "f1-score": 0.5263157894736842,
+      "support": 10.0
+    },
+    "Score 3": {
+      "precision": 0.3,
+      "recall": 0.3,
+      "f1-score": 0.3,
+      "support": 10.0
+    },
+    "Score 4": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 10.0
+    },
+    "accuracy": 0.52,
+    "macro avg": {
+      "precision": 0.45292929292929296,
+      "recall": 0.5199999999999999,
+      "f1-score": 0.46723684210526306,
+      "support": 50.0
+    },
+    "weighted avg": {
+      "precision": 0.45292929292929285,
+      "recall": 0.52,
+      "f1-score": 0.4672368421052632,
+      "support": 50.0
+    }
+  }
+}
