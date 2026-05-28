@@ -108,8 +108,9 @@ Rubric:
 {rubric_text}
 
 Evaluate the abstract and respond with ONLY this format:
-Score: <number from 0 to 4>
 Rationale: <one sentence explanation>
+Score: <number from 0 to 4>
+
 
 Important scoring guidance:
 - Give Score 4 if the abstract covers the main problem, objective, methodology, key results, and conclusion, and is faithful, clear, concise, and free of references.
