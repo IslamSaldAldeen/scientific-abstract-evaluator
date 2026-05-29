@@ -228,8 +228,8 @@ Expected score:
 
 ## Author
 
-Islam SaldAldeen
-Nemeh Abu Issa
+Islam SaldAldeen,
+Nemeh Abu Issa,
 Abd Al-rahman Remawi
 
 ## Repository
