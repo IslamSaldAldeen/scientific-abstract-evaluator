@@ -1,5 +1,5 @@
 experiment:
-  name: exp02_best_uploaded
+  name: best_exp
   description: "Best configuration based on uploaded baseline, finetune, and inference scripts."
   active_dataset: dataset_final
 
@@ -62,10 +62,10 @@ evaluation:
     - cohen_kappa_linear
 
 outputs:
-  experiment_dir: results/experiments/exp02_best_uploaded
-  model_dir: models/experiments/exp02_best_uploaded
-  baseline_predictions: results/experiments/exp02_best_uploaded/baseline_predictions.json
-  baseline_metrics: results/experiments/exp02_best_uploaded/baseline_metrics.json
-  finetuned_predictions: results/experiments/exp02_best_uploaded/finetuned_predictions.json
-  finetuned_metrics: results/experiments/exp02_best_uploaded/finetuned_metrics.json
-  config_used: results/experiments/exp02_best_uploaded/config_used.yaml
+  experiment_dir: results/experiments/best_exp
+  model_dir: models/experiments/best_exp
+  baseline_predictions: results/experiments/best_exp/baseline_predictions.json
+  baseline_metrics: results/experiments/best_exp/baseline_metrics.json
+  finetuned_predictions: results/experiments/best_exp/finetuned_predictions.json
+  finetuned_metrics: results/experiments/best_exp/finetuned_metrics.json
+  config_used: results/experiments/best_exp/config_used.yaml
