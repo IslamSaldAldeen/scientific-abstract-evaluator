@@ -24,3 +24,6 @@ unsloth_compiled_cache/
 # Logs
 logs/
 *.log
+# Local model files - already uploaded to Hugging Face
+models/
+hf_upload/
