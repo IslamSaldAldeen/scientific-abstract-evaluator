@@ -1,0 +1,71 @@
+experiment:
+  name: exp02_score4_relaxed_prompt
+  description: "Best configuration based on uploaded baseline, finetune, and inference scripts."
+  active_dataset: dataset_final
+
+dataset:
+  raw_path: data/raw/dataset_final.json
+  train_path: data/splits/train.json
+  val_path: data/splits/val.json
+  test_path: data/splits/test.json
+  split_by: paper
+  entries_per_paper: 5
+  split_seed: 42
+  train_ratio: 0.8
+  val_ratio: 0.1
+  test_ratio: 0.1
+
+model:
+  base_model: unsloth/mistral-7b-instruct-v0.2-bnb-4bit
+  baseline_model: mistralai/Mistral-7B-Instruct-v0.2
+  max_seq_length: 2048
+  load_in_4bit: true
+
+lora:
+  r: 16
+  alpha: 32
+  dropout: 0.05
+  target_modules:
+    - q_proj
+    - k_proj
+    - v_proj
+    - o_proj
+    - gate_proj
+    - up_proj
+    - down_proj
+
+training:
+  epochs: 10
+  train_batch_size: 4
+  eval_batch_size: 4
+  learning_rate: 0.0002
+  warmup_steps: 50
+  lr_scheduler_type: cosine
+  early_stopping_patience: 3
+  fp16: false
+  bf16: true
+  report_to: none
+
+inference:
+  max_new_tokens: 150
+  baseline_do_sample: false
+  finetuned_do_sample: false
+  finetuned_temperature: 0.1
+
+evaluation:
+  metrics:
+    - accuracy
+    - macro_f1
+    - mae
+    - rmse
+    - qwk
+    - cohen_kappa_linear
+
+outputs:
+  experiment_dir: results/experiments/exp02_score4_relaxed_prompt
+  model_dir: models/experiments/exp02_best_uploaded
+  baseline_predictions: results/experiments/exp02_score4_relaxed_prompt/baseline_predictions.json
+  baseline_metrics: results/experiments/exp02_score4_relaxed_prompt/baseline_metrics.json
+  finetuned_predictions: results/experiments/exp02_score4_relaxed_prompt/finetuned_predictions.json
+  finetuned_metrics: results/experiments/exp02_score4_relaxed_prompt/finetuned_metrics.json
+  config_used: results/experiments/exp02_score4_relaxed_prompt/config_used.yaml
