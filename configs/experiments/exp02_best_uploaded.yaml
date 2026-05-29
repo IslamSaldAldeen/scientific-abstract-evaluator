@@ -49,8 +49,8 @@ training:
 inference:
   max_new_tokens: 150
   baseline_do_sample: false
-  finetuned_do_sample: true
-  finetuned_temperature: 0.1
+  finetuned_do_sample: false
+
 
 evaluation:
   metrics:
