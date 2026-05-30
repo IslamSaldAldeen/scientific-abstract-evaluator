@@ -1,0 +1,94 @@
+{
+  "model": "Gemma-3-12B-Instruct (base)",
+  "experiment": "gemma3_12b_rationale_v1",
+  "predictions_file": "results/experiments/gemma3_12b_rationale_v1/baseline_predictions.json",
+  "num_predictions": 50,
+  "accuracy": 0.34,
+  "macro_f1": 0.3244047619047619,
+  "mae": 0.88,
+  "rmse": 1.2489995996796797,
+  "qwk": 0.6138613861386139,
+  "cohen_kappa_linear": 0.17500000000000004,
+  "confusion_matrix": [
+    [
+      5,
+      3,
+      0,
+      0,
+      2
+    ],
+    [
+      0,
+      1,
+      5,
+      4,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      9,
+      1
+    ],
+    [
+      0,
+      0,
+      0,
+      5,
+      5
+    ],
+    [
+      0,
+      0,
+      0,
+      4,
+      6
+    ]
+  ],
+  "classification_report": {
+    "Score 0": {
+      "precision": 1.0,
+      "recall": 0.5,
+      "f1-score": 0.6666666666666666,
+      "support": 10.0
+    },
+    "Score 1": {
+      "precision": 0.25,
+      "recall": 0.1,
+      "f1-score": 0.14285714285714285,
+      "support": 10.0
+    },
+    "Score 2": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 10.0
+    },
+    "Score 3": {
+      "precision": 0.22727272727272727,
+      "recall": 0.5,
+      "f1-score": 0.3125,
+      "support": 10.0
+    },
+    "Score 4": {
+      "precision": 0.42857142857142855,
+      "recall": 0.6,
+      "f1-score": 0.5,
+      "support": 10.0
+    },
+    "accuracy": 0.34,
+    "macro avg": {
+      "precision": 0.38116883116883116,
+      "recall": 0.34,
+      "f1-score": 0.3244047619047619,
+      "support": 50.0
+    },
+    "weighted avg": {
+      "precision": 0.38116883116883116,
+      "recall": 0.34,
+      "f1-score": 0.3244047619047619,
+      "support": 50.0
+    }
+  }
+}
