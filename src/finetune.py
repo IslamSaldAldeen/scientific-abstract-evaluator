@@ -23,7 +23,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument(
     "--config",
     type=str,
-    default="configs/experiments/exp01_v2_lora.yaml",
+    default="configs/experiments/score_only_v1.yaml",
     help="Path to experiment config YAML file"
 )
 args = parser.parse_args()
@@ -120,12 +120,19 @@ Abstract to Evaluate:
 Rubric:
 {rubric_text}
 
-Evaluate the abstract and respond with ONLY this format:
-Score: <number from 0 to 4>
-Rationale: <one sentence explanation>
+Return only a valid JSON object in this exact format:
+{{"score": <number from 0 to 4>}}
+
+Do not provide a rationale.
+Do not output any extra text.
+Do not repeat the prompt.
+
+Important scoring rule:
+Score 4 does not require mentioning every minor detail.
+Give score 4 if the abstract accurately covers the main problem, objective, methodology, main results, and conclusion, even if some small non-essential details are omitted.
+Do not downgrade from 4 to 3 only because of a missing minor detail.
 [/INST]
-Score: {entry["score"]}
-Rationale: {entry["rationale"]}"""
+{{"score": {entry["score"]}}}"""
 
     return {"text": prompt}
 

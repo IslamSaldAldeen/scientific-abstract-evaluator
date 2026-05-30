@@ -1,0 +1,64 @@
+experiment:
+  name: gemma3_12b_rationale_v1
+  description: Gemma 3 12B Instruct LoRA fine-tuning for abstract evaluation with
+    score and rationale.
+  active_dataset: dataset_final
+dataset:
+  raw_path: data/raw/dataset_final.json
+  train_path: data/splits/train.json
+  val_path: data/splits/val.json
+  test_path: data/splits/test.json
+  split_by: paper
+  entries_per_paper: 5
+  split_seed: 42
+  train_ratio: 0.8
+  val_ratio: 0.1
+  test_ratio: 0.1
+model:
+  base_model: unsloth/gemma-3-12b-it-bnb-4bit
+  baseline_model: unsloth/gemma-3-12b-it-bnb-4bit
+  max_seq_length: 4096
+  load_in_4bit: true
+lora:
+  r: 16
+  alpha: 32
+  dropout: 0.05
+  target_modules:
+  - q_proj
+  - k_proj
+  - v_proj
+  - o_proj
+  - gate_proj
+  - up_proj
+  - down_proj
+training:
+  epochs: 3
+  train_batch_size: 2
+  eval_batch_size: 2
+  learning_rate: 3.0e-05
+  warmup_steps: 20
+  lr_scheduler_type: cosine
+  early_stopping_patience: 1
+  fp16: false
+  bf16: true
+  report_to: none
+inference:
+  max_new_tokens: 150
+  baseline_do_sample: false
+  finetuned_do_sample: false
+evaluation:
+  metrics:
+  - accuracy
+  - macro_f1
+  - mae
+  - rmse
+  - qwk
+  - cohen_kappa_linear
+outputs:
+  experiment_dir: results/experiments/gemma3_12b_rationale_v1
+  model_dir: models/experiments/gemma3_12b_rationale_v1
+  baseline_predictions: results/experiments/gemma3_12b_rationale_v1/baseline_predictions.json
+  baseline_metrics: results/experiments/gemma3_12b_rationale_v1/baseline_metrics.json
+  finetuned_predictions: results/experiments/gemma3_12b_rationale_v1/finetuned_predictions.json
+  finetuned_metrics: results/experiments/gemma3_12b_rationale_v1/finetuned_metrics.json
+  config_used: results/experiments/gemma3_12b_rationale_v1/config_used.yaml
