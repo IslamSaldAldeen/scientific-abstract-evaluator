@@ -1,377 +1,438 @@
-# Scientific Abstract Evaluator
+# Scientific Abstract Quality Evaluator
 
-A web-based scientific abstract evaluation system powered by a fine-tuned instruction-based large language model.
+An automatic evaluator for scientific abstract quality using an instruction-tuned transformer model fine-tuned with LoRA.
 
-The system compares a submitted abstract against reference paper content and returns a quality score from **0 to 4** with a short rationale.
+The system evaluates a submitted scientific abstract against a reference paper and produces:
+
+* A numeric score from **0 to 4**
+* A natural-language rationale explaining the score
+
+The project follows a rubric-based evaluation methodology using structured input fields: task, reference, submission, rubric, score, and rationale.
 
 ---
 
 ## Project Overview
 
-This project aims to evaluate the quality of scientific abstracts using a rubric-based approach.
+Scientific abstracts are expected to summarize the main content of a research paper, including the problem, objective, methodology, main results, and conclusion. Manually evaluating abstract quality can be time-consuming and subjective.
 
-The model checks whether a submitted abstract properly reflects the original paper content based on:
-
-* Content Coverage
-* Faithfulness
-* Language Quality
-* Conciseness
-* Absence of References
-
-The system uses a fine-tuned **Mistral-7B-Instruct-v0.2** model with a **LoRA adapter**.
-The adapter is hosted on Hugging Face and loaded by the FastAPI backend during inference.
+This project builds an automatic abstract quality evaluator using a fine-tuned instruction-tuned large language model. The evaluator takes a reference paper and a submitted abstract, then assigns a quality score based on an explicit rubric.
 
 ---
 
-## Model
+## Final Model
 
-Base model:
+The final selected model is:
 
-```text
-mistralai/Mistral-7B-Instruct-v0.2
-```
+**Gemma-3-12B-Instruct fine-tuned with LoRA**
 
-Fine-tuned LoRA adapter:
+Experiment name:
 
 ```text
-1aRR0w1/scientific-abstract-evaluator-lora
+gemma3_12b_rationale_v1
 ```
 
-Hugging Face model repository:
+The model was selected because it achieved the best performance among the instruction-tuned LLM experiments tested in this project.
+
+---
+
+## Task Definition
+
+The model receives a structured input containing:
+
+| Field        | Description                                         |
+| ------------ | --------------------------------------------------- |
+| `task`       | The instruction describing what should be evaluated |
+| `reference`  | The reference paper or verified source content      |
+| `submission` | The submitted abstract to evaluate                  |
+| `rubric`     | The scoring criteria                                |
+| `score`      | Ground-truth score from 0 to 4                      |
+| `rationale`  | Explanation justifying the ground-truth score       |
+
+The model outputs:
 
 ```text
-https://huggingface.co/1aRR0w1/scientific-abstract-evaluator-lora
-```
-
-The GitHub repository contains the application code, while the fine-tuned LoRA adapter is hosted on Hugging Face.
-
-The model outputs a JSON response containing:
-
-```json
-{
-  "score": 3,
-  "rationale": "The abstract mostly covers the reference but misses some minor details."
-}
+Score: <number from 0 to 4>
+Rationale: <one sentence explanation>
 ```
 
 ---
 
 ## Scoring Rubric
 
-| Score | Meaning                                                                                                                                        |
-| ----- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
-| 4     | Excellent abstract: covers the main problem, objective, method, results, and conclusion; faithful, clear, concise, and includes no references. |
-| 3     | Good abstract: mostly covers the reference but misses one minor important element or has minor clarity/conciseness issues.                     |
-| 2     | Partial abstract: covers only some important elements and misses major parts such as the method, results, or conclusion.                       |
-| 1     | Weak abstract: related to the topic but vague and misses most important information.                                                           |
-| 0     | Invalid abstract: unrelated, contradictory, fabricated, or contains serious unsupported claims.                                                |
+| Score | Label     | Meaning                                                                                                                      |
+| ----- | --------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| 0     | Invalid   | The abstract is unrelated, fabricated, contradictory, or contains serious unsupported claims.                                |
+| 1     | Weak      | The abstract is related to the broad topic but very vague and misses most study-specific details.                            |
+| 2     | Partial   | The abstract contains some correct information but misses major components such as methodology, main results, or conclusion. |
+| 3     | Good      | The abstract is mostly correct and faithful but misses minor details or has minor specificity/language issues.               |
+| 4     | Excellent | The abstract covers the problem, objective, methodology, main results, and conclusion clearly and faithfully.                |
 
 ---
 
-## System Architecture
+## Dataset
+
+The dataset was created for scientific abstract quality evaluation.
+
+Each entry includes the six required roles:
+
+```json
+{
+  "task": "Evaluate the quality of the submitted abstract against the reference paper.",
+  "reference": "Reference scientific paper content.",
+  "submission": "Candidate abstract to evaluate.",
+  "rubric": {
+    "0": "Invalid: unrelated, contradictory, fabricated, or contains serious unsupported claims.",
+    "1": "Weak: related to the topic but very vague and misses most important details.",
+    "2": "Partial: covers some important elements but misses major parts such as methodology, results, or conclusion.",
+    "3": "Good: mostly covers the paper but misses one minor element or has minor specificity/language issues.",
+    "4": "Excellent: covers problem, objective, methodology, main results, and conclusion; faithful, clear, concise."
+  },
+  "score": 3,
+  "rationale": "The abstract is mostly accurate but misses a minor methodological detail."
+}
+```
+
+The dataset was split into:
 
 ```text
-Streamlit Frontend
-        ↓
-FastAPI Backend
-        ↓
-Mistral-7B-Instruct + LoRA Adapter
-        ↓
-Score + Rationale
+data/splits/train.json
+data/splits/val.json
+data/splits/test.json
+```
+
+The test set contains **50 examples**.
+
+---
+
+## Methodology
+
+The project follows this pipeline:
+
+1. Prepare a structured instruction-tuning dataset.
+2. Split the dataset into train, validation, and test sets.
+3. Format each example as an instruction prompt.
+4. Evaluate the base model on the held-out test set.
+5. Fine-tune the model using LoRA.
+6. Evaluate the fine-tuned model on the same test set.
+7. Compare base and fine-tuned results using quantitative metrics.
+8. Inspect generated rationales qualitatively.
+
+---
+
+## Model Training
+
+The final model was trained using:
+
+| Component          | Setting              |
+| ------------------ | -------------------- |
+| Base model         | Gemma-3-12B-Instruct |
+| Fine-tuning method | LoRA                 |
+| Quantization       | 4-bit                |
+| Output format      | Score + rationale    |
+| Test set size      | 50 examples          |
+| Score range        | 0–4                  |
+
+Training configuration:
+
+```yaml
+experiment:
+  name: gemma3_12b_rationale_v1
+
+model:
+  base_model: unsloth/gemma-3-12b-it-bnb-4bit
+  max_seq_length: 4096
+  load_in_4bit: true
+
+training:
+  epochs: 3
+  learning_rate: 0.00003
+  train_batch_size: 2
+  eval_batch_size: 2
+  bf16: true
 ```
 
 ---
 
-## Project Structure
+## Evaluation Metrics
+
+The following metrics were used:
+
+| Metric             | Purpose                                             |
+| ------------------ | --------------------------------------------------- |
+| Accuracy           | Exact score match                                   |
+| Macro F1           | Balanced class-level performance                    |
+| MAE                | Average absolute score error                        |
+| RMSE               | Penalizes larger score errors                       |
+| QWK                | Ordinal agreement between predicted and true scores |
+| Cohen Kappa Linear | Agreement adjusted for chance                       |
+
+Quadratic Weighted Kappa (QWK) is especially important because the scores are ordinal. A prediction of 3 instead of 4 is less severe than a prediction of 0 instead of 4.
+
+---
+
+## Results
+
+### Base Model Results
+
+The base Gemma-3-12B-Instruct model was evaluated before fine-tuning.
+
+| Metric             | Base Gemma |
+| ------------------ | ---------: |
+| Accuracy           |       0.34 |
+| Macro F1           |      0.324 |
+| MAE                |       0.88 |
+| RMSE               |      1.249 |
+| QWK                |      0.614 |
+| Cohen Kappa Linear |      0.175 |
+
+### Fine-Tuned Model Results
+
+After LoRA fine-tuning, the model achieved:
+
+| Metric             | Fine-tuned Gemma |
+| ------------------ | ---------------: |
+| Accuracy           |             0.58 |
+| Macro F1           |            0.539 |
+| MAE                |             0.54 |
+| RMSE               |            0.927 |
+| QWK                |            0.770 |
+| Cohen Kappa Linear |            0.475 |
+
+### Before vs. After Fine-Tuning
+
+| Metric             | Base Model | Fine-Tuned Model | Change |
+| ------------------ | ---------: | ---------------: | -----: |
+| Accuracy           |       0.34 |             0.58 |  +0.24 |
+| Macro F1           |      0.324 |            0.539 | +0.215 |
+| MAE                |       0.88 |             0.54 |  -0.34 |
+| RMSE               |      1.249 |            0.927 | -0.322 |
+| QWK                |      0.614 |            0.770 | +0.156 |
+| Cohen Kappa Linear |      0.175 |            0.475 | +0.300 |
+
+Fine-tuning improved performance across all major metrics.
+
+---
+
+## Fine-Tuned Confusion Matrix
+
+```text
+Rows = true score, columns = predicted score
+
+        0   1   2   3   4
+0       8   1   0   1   0
+1       0   10  0   0   0
+2       0   4   1   4   1
+3       0   1   1   7   1
+4       0   1   0   6   3
+```
+
+The model performs well on scores 0 and 1. The most challenging class is score 2, which is often confused with scores 1 and 3. This is expected because score 2 represents partially complete abstracts, which are harder to distinguish from weak or mostly good abstracts.
+
+---
+
+## Files and Directories
 
 ```text
 scientific-abstract-evaluator/
 │
-├── app/
-│   ├── backend/
-│   │   └── main.py
-│   │
-│   └── frontend/
-│       └── streamlit_app.py
-│
 ├── configs/
-├── data/
-├── docs/
-├── models/
-├── notebooks/
-├── results/
-├── src/
+│   └── experiments/
+│       └── gemma3_12b_rationale_v1.yaml
 │
-├── test_hf_model.py
-├── upload_to_hf.py
-├── requirements.txt
-└── README.md
+├── data/
+│   └── splits/
+│       ├── train.json
+│       ├── val.json
+│       └── test.json
+│
+├── results/
+│   └── experiments/
+│       └── gemma3_12b_rationale_v1/
+│           ├── baseline_predictions.json
+│           ├── baseline_metrics.json
+│           ├── finetuned_predictions.json
+│           ├── finetuned_metrics.json
+│           └── config_used.yaml
+│
+├── src/
+│   ├── baseline.py
+│   ├── finetune.py
+│   ├── inference.py
+│   └── evaluate.py
+│
+└── app/
+    ├── backend/
+    │   └── main.py
+    └── frontend/
+        └── streamlit_app.py
 ```
-
-Note: local model/checkpoint files are ignored by Git and are not included in this repository.
-The trained LoRA adapter is stored on Hugging Face.
 
 ---
 
-## Backend
+## How to Run
 
-The backend is implemented using **FastAPI**.
+### 1. Create and activate environment
 
-Main endpoint:
+```bash
+python3 -m venv ~/venvs/myenv
+source ~/venvs/myenv/bin/activate
+```
+
+Or if using `virtualenv`:
+
+```bash
+source ~/venvs/myenv/bin/activate
+```
+
+### 2. Install requirements
+
+```bash
+pip install -r requirements.txt
+```
+
+If needed:
+
+```bash
+pip install fastapi uvicorn streamlit requests
+```
+
+### 3. Run base model evaluation
+
+```bash
+python src/baseline.py --config configs/experiments/gemma3_12b_rationale_v1.yaml
+```
+
+### 4. Fine-tune the model
+
+```bash
+python src/finetune.py --config configs/experiments/gemma3_12b_rationale_v1.yaml
+```
+
+### 5. Run inference with the fine-tuned model
+
+```bash
+python src/inference.py --config configs/experiments/gemma3_12b_rationale_v1.yaml
+```
+
+### 6. View metrics
+
+```bash
+cat results/experiments/gemma3_12b_rationale_v1/finetuned_metrics.json
+```
+
+---
+
+## Web Demo
+
+The project includes a simple demo using:
+
+* **FastAPI** backend
+* **Streamlit** frontend
+
+### Run backend
+
+```bash
+uvicorn app.backend.main:app --host 0.0.0.0 --port 8000
+```
+
+### Run frontend
+
+Open a second terminal:
+
+```bash
+streamlit run app/frontend/streamlit_app.py --server.address 0.0.0.0 --server.port 8501
+```
+
+Then open:
 
 ```text
-POST /predict
+http://<server-ip>:8501
 ```
-
-Input:
-
-```json
-{
-  "reference": "Original paper content or reference text",
-  "submission": "Submitted abstract to evaluate"
-}
-```
-
-Output:
-
-```json
-{
-  "score": 3,
-  "rationale": "Short explanation of the evaluation",
-  "raw_output": "Raw model output"
-}
-```
-
-The backend loads the base model and applies the LoRA adapter during startup.
-The model is loaded once to avoid reloading it for every request.
-
----
-
-## Frontend
-
-The frontend is implemented using **Streamlit**.
 
 The user can paste:
 
 1. Reference paper content
 2. Submitted abstract
 
-The interface then displays:
+The system returns:
 
-* Final score
-* Rationale
-* Raw model output
-
----
-
-## Hardware Requirement
-
-This demo is designed to run on a GPU-enabled machine.
-
-The model was tested using an NVIDIA A100 GPU with CUDA support.
-
-Running the backend on CPU is not recommended because loading and generating from Mistral-7B may be extremely slow or may fail due to memory limitations.
+1. Predicted score
+2. Score label
+3. Rationale
+4. Model name
+5. Experiment name
 
 ---
 
-## Installation
+## Example Output
 
-Create and activate a virtual environment:
-
-```bash
-python -m venv myenv
-source myenv/bin/activate
-```
-
-Install dependencies:
-
-```bash
-pip install -r requirements.txt
-```
-
-If needed, install the web demo dependencies:
-
-```bash
-pip install fastapi uvicorn streamlit requests transformers peft accelerate bitsandbytes sentencepiece safetensors
-```
-
-If PyTorch CUDA compatibility issues occur, install a PyTorch version that matches the CUDA driver available on the machine.
-
----
-
-## Running the Project
-
-The system requires three terminals when running on a remote VM.
-
-### Terminal 1: Run FastAPI Backend
-
-Run this on the VM:
-
-```bash
-source ~/venvs/myenv/bin/activate
-cd ~/scientific-abstract-evaluator
-
-uvicorn app.backend.main:app --host 0.0.0.0 --port 8000
-```
-
-The backend will load the model during startup.
-Wait until the model is fully loaded before using the frontend.
-
----
-
-### Terminal 2: Run Streamlit Frontend
-
-Run this on the VM:
-
-```bash
-source ~/venvs/myenv/bin/activate
-cd ~/scientific-abstract-evaluator
-
-streamlit run app/frontend/streamlit_app.py --server.port 8502 --server.address 0.0.0.0
+```text
+Score: 3
+Rationale: The abstract is mostly faithful and covers the main objective and results, but it misses a minor methodological detail.
 ```
 
 ---
 
-### Terminal 3: SSH Tunnel
+## Key Findings
 
-From the local Windows PowerShell:
+Fine-tuning had a clear positive impact.
 
-```powershell
-ssh -i $env:USERPROFILE\.ssh\my-gcp-key -L 8503:localhost:8502 username@YOUR_VM_EXTERNAL_IP
-```
-
-Replace:
+The base model achieved:
 
 ```text
-username
+Accuracy = 0.34
+QWK = 0.614
+MAE = 0.88
 ```
 
-with your VM username, and replace:
+The fine-tuned model achieved:
 
 ```text
-YOUR_VM_EXTERNAL_IP
+Accuracy = 0.58
+QWK = 0.770
+MAE = 0.54
 ```
 
-with your VM external IP address.
-
-Then open the website locally:
-
-```text
-http://localhost:8503
-```
-
-The frontend will communicate with the FastAPI backend running on the same VM.
+This shows that LoRA fine-tuning helped the model better align with the abstract evaluation rubric.
 
 ---
 
-## Example Test
+## Challenges
 
-Reference:
+The main challenges were:
 
-```text
-This study introduces a fine-tuned instruction-based language model for evaluating the quality of scientific abstracts. The model compares a submitted abstract with the original paper content and assigns a score from 0 to 4 based on five criteria: content coverage, faithfulness, language quality, conciseness, and absence of references. The system uses supervised fine-tuning on rubric-labeled examples, where each training entry includes a reference text, a submitted abstract, a score, and a rationale. The model is evaluated using accuracy, macro F1, mean absolute error, root mean squared error, quadratic weighted kappa, and Cohen’s kappa. The results show that the fine-tuned model can generate useful rubric-based scores and explanations, but it still has difficulty distinguishing between middle-quality abstracts, especially scores 2 and 3. The study concludes that instruction-tuned language models can support abstract quality assessment, but further dataset improvement and human validation are needed before high-stakes academic use.
-```
-
-Submission:
-
-```text
-This study presents a fine-tuned instruction-based language model for evaluating scientific abstracts by comparing a submitted abstract with the original paper content. The model assigns scores from 0 to 4 using five criteria: content coverage, faithfulness, language quality, conciseness, and absence of references. It is trained with supervised rubric-labeled examples that include reference texts, submissions, scores, and rationales. The system is evaluated using accuracy, macro F1, MAE, RMSE, quadratic weighted kappa, and Cohen’s kappa. Results show that the model can produce useful rubric-based scores and explanations, although it still struggles to distinguish some middle-quality abstracts, especially scores 2 and 3. The study concludes that instruction-tuned models can support abstract evaluation, but more dataset improvement and human validation are needed before high-stakes use.
-```
-
-Expected score:
-
-```text
-4
-```
+1. **Middle-score ambiguity:** Score 2 was difficult because it lies between weak and mostly complete abstracts.
+2. **Score 4 under-prediction:** Some excellent abstracts were predicted as score 3.
+3. **Small dataset size:** The dataset size limited the model's ability to fully generalize.
+4. **Output control:** Some generated rationales were longer than expected.
+5. **Prompt sensitivity:** Small changes in the rubric wording sometimes changed the prediction distribution.
 
 ---
 
-## Additional Test Cases
+## Future Work
 
-### Score 3 Example
+Possible improvements include:
 
-```text
-This study proposes a fine-tuned instruction-based language model for evaluating scientific abstracts. The model compares submitted abstracts with the original paper content and scores them from 0 to 4 using criteria such as content coverage, faithfulness, language quality, conciseness, and absence of references. It is trained on supervised rubric-labeled examples and evaluated with several metrics including accuracy, macro F1, MAE, RMSE, and kappa measures. The results show that the model can provide useful rubric-based scores and explanations, but it still struggles with middle-quality abstracts.
-```
-
-Expected score:
-
-```text
-3
-```
-
-### Score 2 Example
-
-```text
-This paper describes a fine-tuned language model that evaluates scientific abstracts. The model gives abstracts a score from 0 to 4 based on several quality criteria, including coverage, faithfulness, and language quality. It uses examples with scores and rationales during training. The study shows that language models can be useful for evaluating abstract quality.
-```
-
-Expected score:
-
-```text
-2
-```
-
-### Score 1 Example
-
-```text
-This paper is about using artificial intelligence to improve scientific writing. It explains that machine learning can help evaluate abstracts and give feedback to researchers. The system is useful because it can make academic writing better and easier to review.
-```
-
-Expected score:
-
-```text
-1
-```
-
-### Score 0 Example
-
-```text
-This study develops a convolutional neural network for detecting brain tumors from MRI images. The model is trained on medical scans and achieves 99.8% classification accuracy. The paper concludes that the system is ready for clinical deployment and can replace human radiologists in hospital diagnosis.
-```
-
-Expected score:
-
-```text
-0
-```
+* Expanding the dataset with more scientific papers.
+* Adding more balanced examples for score 2.
+* Improving JSON output formatting.
+* Adding confidence scores.
+* Evaluating rationale quality manually.
+* Testing additional instruction-tuned models.
+* Improving the web interface with component-level feedback.
 
 ---
 
-## Current Limitations
+## Final Conclusion
 
-* The model may sometimes produce an imperfect rationale even when the score is reasonable.
-* The model can occasionally over-penalize abstracts or claim that a detail is missing when it was paraphrased.
-* The system is intended as a research/demo tool, not as a final academic grading system.
-* Further dataset improvement and human validation are needed for more reliable evaluation.
-* The model requires a GPU-enabled environment for practical inference speed.
+This project demonstrates that an instruction-tuned transformer can be fine-tuned to perform rubric-based scientific abstract quality evaluation.
 
----
-
-## Technologies Used
-
-* Python
-* FastAPI
-* Streamlit
-* Hugging Face Transformers
-* PEFT / LoRA
-* BitsAndBytes 4-bit quantization
-* PyTorch
-* Hugging Face Hub
-* Git / GitHub
-
----
-
-## Authors
-
-* Islam SaldAldeen
-* Nemeh Abu Issa
-* Abd Al-rahman Remawi
-
----
-
-## Repository
+The final Gemma-3-12B-Instruct model fine-tuned with LoRA improved significantly over the base model:
 
 ```text
-https://github.com/IslamSaldAldeen/scientific-abstract-evaluator
+Accuracy: 0.34 → 0.58
+QWK: 0.614 → 0.770
+MAE: 0.88 → 0.54
 ```
+
+The model produces both a score and a rationale, making the evaluation more interpretable and useful for academic assessment.
