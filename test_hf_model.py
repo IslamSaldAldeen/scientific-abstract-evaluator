@@ -3,7 +3,7 @@ from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
 from peft import PeftModel
 
 BASE_MODEL = "mistralai/Mistral-7B-Instruct-v0.2"
-ADAPTER_MODEL = "1aRR0w1/scientific-abstract-evaluator-lora"
+ADAPTER_MODEL = "IslamSaadAldeen/scientific-abstract-evaluator-lora"
 
 print("CUDA available:", torch.cuda.is_available())
 print("CUDA version:", torch.version.cuda)
